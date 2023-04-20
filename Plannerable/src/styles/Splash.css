@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+* {
+    font-family: 'Yeseva One', cursive;
+}
+
+.Splash {
+    background: url(/src/assets/SplashBG1920.png) no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+button {
+    outline: none;
+    border: none;
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    border-radius: 50px;
+}
+
+.login {
+    background-color: #B2A4FF;
+    color: white;
+}
+
+.regis {
+    background-color: #D9D9D9;
+    color: #565656;
+}

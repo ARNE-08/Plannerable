@@ -1,0 +1,34 @@
+.RegisPage {
+    background: url(/src/assets/SignUp.png) no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.RegisBox {
+    background: white;
+    width: 400px;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.closeregis {
+    position: relative;
+    right: 190px;
+    bottom: 110px;
+}
+
+.Regisnav {
+    position: relative;
+    /* top: -10px; */
+}

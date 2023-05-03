@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+.TodoRabbit {
+    width: 25%;
+    position: absolute;
+    left: 100px;
+    top: 150px;
+}
+
+.TodoText {
+    font-family: 'Coiny', cursive;
+    font-size: 2em;
+    color: #7560A2;
+}

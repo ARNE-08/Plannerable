@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+/* .NavbarPlan {
+    padding: 20px;
+    display: flex;
+} */
+
+.Header {
+    background: transparent;
+    padding: 15px 10px 15px 20px;
+    font-family: 'Coiny', cursive;
+    display: flex;
+    /* width: 100%; */
+}
+
+/* 
+.HeaderTool {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    color: #B2A4FF;
+} */
+
+.LogoBox {
+    width: 400px;
+}
+
+.logonav {
+    width: 100%;
+    position: relative;
+    top: 15px;
+    /* left: 20px; */
+    /* right: 330px; */
+}
+
+.inactive-link {
+    color: #B2A4FF;
+    text-decoration: none;
+    font-family: 'Coiny', cursive;
+
+    transition: .3s;
+}
+
+.inactive-link .text {
+    font-family: 'Coiny', cursive;
+    font-size: 1.6em;
+}
+
+.inactive-link:hover {
+    color: #7560A2;
+}
+
+.active-link {
+    color: #7560A2;
+    text-decoration: underline;
+}
+
+.active-link.text {
+    font-family: 'Coiny', cursive;
+}
+
+.Addbut {
+    background-color: #B2A4FF;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    font-family: 'Coiny', cursive;
+    font-size: 1.5em;
+
+    transition: .3s;
+}
+
+.Addbut:hover {
+    background-color: #7560A2;
+}
+
+.ProfilePic {
+    border-radius: 50%;
+    height: 60px;
+    border: 5px solid #B2A4FF;
+
+    transition: .3s;
+}
+
+.ProfilePic:hover {
+    border-color: #7560A2;
+}
+
+.active-link.ProfilePic {
+    border-color: #7560A2;
+}

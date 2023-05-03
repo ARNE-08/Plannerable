@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+.Homepage {
+    background: url(/src/assets/Home.png) no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.reminderBox {
+    background-color: rgb(255, 255, 255, 0.4);
+    width: 35%;
+    height: 275px;
+    border: 3px solid #B2A4FF;
+    border-radius: 30px;
+
+    position: absolute;
+    right: 35px;
+}
+
+.reminderTitle {
+    font-family: 'Coiny', cursive;
+    font-size: 1.7em;
+    margin: 0;
+    color: #7560A2;
+
+    position: relative;
+    bottom: 20px;
+    left: 130px;
+
+    background-color: #FFFEF3;
+    width: 270px;
+    border-radius: 3.px;
+}
+
+.Note {
+    width: 35%;
+    position: absolute;
+    right: 35px;
+    bottom: 40px;
+}

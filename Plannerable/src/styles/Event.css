@@ -22,4 +22,16 @@
     border: none;
     outline: none;
     width: 150px;
+
+    position: relative;
+    bottom: 35px;
+    right: 50px;
+}
+
+.TodoText.event {
+    width: 300px;
+    margin: 0;
+    position: relative;
+    top: 5px;
+    left: 50px;
 }

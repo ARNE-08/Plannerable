@@ -1,6 +1,7 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography, Stack, IconButton, Box, Button, Grid } from '@mui/material'
+import { AppBar, Toolbar, Typography, Stack, IconButton, Box, Button, Grid, MenuItem, Menu } from '@mui/material'
 import { NavLink } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/Nav.css';
 // import { display, fontSize } from '@mui/system';
@@ -13,6 +14,21 @@ import '../styles/Nav.css';
 
 
 function Navbar() {
+    const [auth, setAuth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    // const handleChange = (event) => {
+    //     setAuth(event.target.checked);
+    // };
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <Box class="Header">
             <Box class="LogoBox">
@@ -67,7 +83,28 @@ function Navbar() {
                     </nav>
                 </Grid>
                 <Grid item>
-                    <Button class="Addbut">Add</Button>
+                    <Button class="Addbut" onClick={handleMenu}
+                    >Add</Button>
+
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                        // sx={{position:"absolute"}}
+                    >
+                        <MenuItem onClick={handleClose} component={Link} to="/todoadd">Add To-do</MenuItem>
+                        <MenuItem onClick={handleClose} component={Link} to="/eventadd">Add Event</MenuItem>
+                    </Menu>
                 </Grid>
                 <Grid item>
                     <nav>

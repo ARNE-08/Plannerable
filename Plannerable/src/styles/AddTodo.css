@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+.AddTodoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.AddBox {
+    border: 3px solid #FFB4B4;
+    border-radius: 50px;
+    height: 500px;
+    width: 80%;
+    background-color: white;
+
+    position: relative;
+    top: 25px;
+}
+
+.addbut {
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    font-family: 'Coiny', cursive;
+    font-size: 1.3em;
+
+    cursor: pointer;
+    border: none;
+
+    position: relative;
+    bottom: 50px;
+}
+
+.addbut.can {
+    background-color: #D9D9D9;
+    color: #565656;
+    margin-right: 30px;
+}
+
+.addbut.add {
+    background-color: #D78B8B;
+    color: white;
+}

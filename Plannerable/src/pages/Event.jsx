@@ -7,7 +7,7 @@ function Event() {
   return (
     <Box>
       <Navbar />
-      <Typography variant='h4' class="TodoText">Upcoming Event</Typography>
+      <Typography variant='h4' class="TodoText event">Upcoming Event</Typography>
       <Button class="deleteBut">delete all</Button>
       <Box class="weeklyBox">
         <Typography variant='h5' class="reminderTitle">

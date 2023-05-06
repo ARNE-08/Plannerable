@@ -20,11 +20,32 @@
     justify-content: center;
     align-items: center;
 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.RegisBox1 {
+    background: white;
+    width: 330px;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .closeregis {
     position: relative;
     right: 190px;
+    bottom: 110px;
+}
+
+.closeregis1 {
+    position: relative;
+    right: 160px;
     bottom: 110px;
 }
 

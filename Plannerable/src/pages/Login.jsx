@@ -37,7 +37,7 @@ function Login() {
           />
         </Grid>
         <Grid item xs={12} justifyContent="center"
-          alignItems="center">
+          alignItems="center" display={{ xs: "none", sm: "block" }}>
           <Box class="FormBox">
             <Box class="closenav">
               <nav>
@@ -83,25 +83,86 @@ function Login() {
                 required
               />
             </Box>
-            {/* <Box class='InputForm mail'>
-              <label>
-                Email
-                {/* <Box class='icon'><MailOutlineRoundedIcon /></Box>
-              </label>
-              <input type="email" placeholder=" " required />
-              <MailOutlineRoundedIcon />
-            </Box>
-            <Box class="Border"></Box>
 
-            <Box class='InputForm pass'>
-              <label>
-                Password
-                <input type="password" placeholder=" " required />
-                <LockOutlinedIcon />
-                {/* <Box class='icon'><LockOutlinedIcon /></Box>
-              </label>
+            <Box class="Loginnav">
+              <nav>
+                <NavLink replace to="/home" className="inactive-link">
+                  {({ isActive }) =>
+                    isActive ? (
+                      <p className="active-link">Home</p>
+                    ) : (
+                      <button class="loginBut">Login</button>
+                    )
+                  }
+                </NavLink>
+              </nav>
             </Box>
-            <Box class="Border1"></Box> */}
+
+            <Box class='noacc'>
+              <nav>
+                <NavLink replace to="/regis" className="inactive-link">
+                  {({ isActive }) =>
+                    isActive ? (
+                      <p className="active-link">Home</p>
+                    ) : (
+                      <Typography variant="p" class="RegisText">
+                        Don't have an account?
+                      </Typography>
+                    )
+                  }
+                </NavLink>
+              </nav>
+            </Box>
+          </Box>
+        </Grid>
+
+        <Grid item xs={12} justifyContent="center"
+          alignItems="center" display={{ xs: "block", sm: "none" }}>
+          <Box class="FormBox1">
+            <Box class="closenav1">
+              <nav>
+                <NavLink replace to="/" className="inactive-link">
+                  {({ isActive }) =>
+                    isActive ? (
+                      <p className="active-link">Home</p>
+                    ) : (
+                      <button class="closeButton">
+                        <Box class="closeIcon">
+                          <ArrowBackRoundedIcon />
+                        </Box>
+                      </button>
+                    )
+                  }
+                </NavLink>
+              </nav>
+            </Box>
+
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '85px', color: 'action.active', mr: 1, my: 0.5 }} />
+              <TextField
+                // class="InputForm mail"
+                id="input-with-sx"
+                label="Email"
+                type={"email"}
+                // value={email}
+                sx={{ width: '200px', position: 'relative', bottom: '90px' }}
+                variant="standard"
+                required />
+            </Box>
+
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <LockOutlinedIcon sx={{ position: 'relative', bottom: '50px', color: 'action.active', mr: 1, my: 0.5 }} />
+              <TextField
+                // class="InputForm pass"
+                id="input-with-sx"
+                label="Password"
+                type={"password"}
+                // value={email}
+                sx={{ width: '200px', position: 'relative', bottom: '60px' }}
+                variant="standard"
+                required
+              />
+            </Box>
 
             <Box class="Loginnav">
               <nav>

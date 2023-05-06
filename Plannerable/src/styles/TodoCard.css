@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Amethysta&display=swap');
+
+.Todocard {
+    background-color: white;
+    border-radius: 30px;
+    height: 75px;
+    width: 700px;
+    border: 3px solid #FFDEB4;
+    overflow: hidden;
+}
+
+.todoname {
+    font-family: 'Amethysta', serif;
+    font-size: 1.2em;
+    position: relative;
+    bottom: 37px;
+    right: 90px;
+}
+
+.deletebut {
+    background: #B17F3F;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 640px;
+    bottom: 110px;
+}

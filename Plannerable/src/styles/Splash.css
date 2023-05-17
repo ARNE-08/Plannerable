@@ -12,6 +12,9 @@
 .logoimg {
     width: 540px;
     height: auto;
+
+    position: relative;
+    top: 30px;
 }
 
 .logoimg1 {
@@ -34,9 +37,12 @@
     border-radius: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     cursor: pointer;
+
+    position: relative;
+    top: 30px;
 }
 
-.regis {
+/* .regis {
     background-color: #D9D9D9;
     color: #565656;
     outline: none;
@@ -48,7 +54,7 @@
     border-radius: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     cursor: pointer;
-}
+} */
 
 .login1 {
     background-color: #B2A4FF;
@@ -67,7 +73,7 @@
     top: 50px;
 }
 
-.regis1 {
+/* .regis1 {
     background-color: #D9D9D9;
     color: #565656;
     outline: none;
@@ -82,4 +88,4 @@
 
     position: relative;
     top: 50px;
-}
+} */

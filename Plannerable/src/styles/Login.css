@@ -104,6 +104,8 @@
 .noacc {
     position: relative;
     top: 20px;
+
+    cursor: pointer;
 }
 
 .Border {

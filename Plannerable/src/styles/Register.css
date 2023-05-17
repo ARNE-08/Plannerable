@@ -1,4 +1,4 @@
-.RegisPage {
+/* .RegisPage {
     background: url(/src/assets/SignUp.png) no-repeat;
     background-size: cover;
     width: 100vw;
@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .RegisBox {
     background: white;
@@ -21,6 +21,8 @@
     align-items: center;
 
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    position: relative;
 }
 
 .RegisBox1 {
@@ -38,18 +40,24 @@
 }
 
 .closeregis {
-    position: relative;
-    right: 190px;
-    bottom: 110px;
+    position: absolute;
+    left: -40px;
+    top: -40px;
 }
 
 .closeregis1 {
-    position: relative;
-    right: 160px;
-    bottom: 110px;
+    position: absolute;
+    left: -40px;
+    top: -40px;
 }
 
 .Regisnav {
     position: relative;
+    top: 40px;
     /* top: -10px; */
+}
+
+
+.noacc.directtologin {
+    top: 65px;
 }

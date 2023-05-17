@@ -1,27 +1,36 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import './App.css'
 import { Route, Routes, NavLink, useParams } from 'react-router-dom'
 import SplashScreen from './pages/SplashScreen'
-import Login from './pages/Login'
 import Error from './pages/Error'
-import Register from './pages/Register'
 import Home from './pages/Home'
 import Todo from './pages/Todo'
 import Profile from './pages/Profile'
 import EditNote from './pages/EditNote'
 import AddTodo from './pages/AddTodo'
+import Auth from './pages/Auth'
 import { Box } from '@mui/material'
+import GlobalContext from '/src/context/GlobalContext'
+
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [userLogin, setuserLogin] = useState(false)
+  const [status, setStatus] = useState('');
+  const [user, setUser] = useState();
+
+  const globalContextValue = useMemo(() => {
+    return {
+      user,
+      setUser,
+      setStatus,
+    };
+  }, [user]);
 
   return (
-    <Box>
+    <GlobalContext.Provider value={globalContextValue}>
       <Routes>
         <Route exect path="/" element={<SplashScreen />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/regis" element={<Register />} />
+        <Route path="/auth" element={<Auth />} />
         <Route path="/home" element={<Home />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/profile" element={<Profile />} />
@@ -34,7 +43,7 @@ function App() {
   <Route path="/admin" element={<Admin userLogin={userLogin} setuserLogin={setuserLogin} />} /> */}
         <Route path="*" element={<Error />} />
       </Routes>
-    </Box>
+    </GlobalContext.Provider>
   )
 }
 

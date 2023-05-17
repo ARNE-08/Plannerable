@@ -26,7 +26,7 @@ function SplashScreen() {
       <Grid container spacing={2} direction='column' display={{ xs: "none", sm: "block" }}>
         <Grid item>
           <nav>
-            <NavLink replace to="/login" className="inactive-link">
+            <NavLink replace to="/auth" className="inactive-link">
               {({ isActive }) =>
                 isActive ? (
                   <p className="active-link">Home</p>
@@ -38,9 +38,9 @@ function SplashScreen() {
           </nav>
         </Grid>
 
-        <Grid item>
+        {/* <Grid item>
           <nav>
-            <NavLink replace to="/regis" className="inactive-link">
+            <NavLink replace to="/auth" className="inactive-link">
               {({ isActive }) =>
                 isActive ? (
                   <p className="active-link">Home</p>
@@ -50,13 +50,13 @@ function SplashScreen() {
               }
             </NavLink>
           </nav>
-        </Grid>
+        </Grid> */}
       </Grid>
 
       <Grid container spacing={2} direction='column' display={{ xs: "block", sm: "none" }}>
         <Grid item>
           <nav>
-            <NavLink replace to="/login" className="inactive-link">
+            <NavLink replace to="/auth" className="inactive-link">
               {({ isActive }) =>
                 isActive ? (
                   <p className="active-link">Home</p>
@@ -68,9 +68,9 @@ function SplashScreen() {
           </nav>
         </Grid>
 
-        <Grid item>
+        {/* <Grid item>
           <nav>
-            <NavLink replace to="/regis" className="inactive-link">
+            <NavLink replace to="/auth" className="inactive-link">
               {({ isActive }) =>
                 isActive ? (
                   <p className="active-link">Home</p>
@@ -80,7 +80,7 @@ function SplashScreen() {
               }
             </NavLink>
           </nav>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   )

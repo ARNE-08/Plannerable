@@ -30,38 +30,28 @@ function Register({ setIsLogin }) {
   const [passwordError, setPasswordError] = useState('')
 
   const handleSubmit = async () => {
-    // TODO: Implement login
-    // 1. validate form
     if (!validateForm()) return;
-    // 4. if fail, show error message alert, and reset password fields
     try {
-      // 2. send request to server
       const response = await Axios.post('http://localhost:8000/regis', {
         username,
         email,
         password
       });
-      // 3. if successful, change modal to login mode
       if (response.data.success) {
         setIsLogin(true);
         setStatus({
-          msg: response.data.msg,
+          msg: 'Create account successfully',
           severity: 'success'
         });
       }
     } catch (e) {
-      // 4. if fail, show error message alert, and reset password fields
       setPassword('');
-      // check if e are AxiosError
       if (e instanceof AxiosError)
         if (e.response)
-          // check if e.response exist
-          // console.log(e.response.data.error)
           return setStatus({
             msg: e.response.data.error,
             severity: 'error',
           });
-      // if e is not AxiosError or response doesn't exist, return error message
       return setStatus({
         msg: e.message,
         severity: 'error',

@@ -2,10 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Amethysta&display=swap');
 
 .TodoRabbit {
-    width: 25%;
-    position: absolute;
+    width: 60%;
+    position: relative;
     left: 120px;
-    top: 150px;
+    top: 50px;
+    /* width: 100%; */
+    /* position: absolute;
+    left: 150px;
+    top: 150px; */
 
     display: flex;
     justify-content: center;
@@ -14,12 +18,12 @@
 
 .TitleBox {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 
-    position: relative;
+    /* position: relative;
     bottom: 20px;
-    left: 100px;
+    left: 100px; */
 }
 
 .TodoText {
@@ -66,10 +70,47 @@
     color: white;
 }
 
+.but.complete1 {
+    background: white;
+    border: 3px solid #D9D9D9;
+    color: #565656;
+    margin-bottom: 15px;
+    /* margin-left: 20px; */
+}
+
+.but.delete1 {
+    background: red;
+    border: 3px solid red;
+    color: white;
+}
+
 .cardtodo {
     position: absolute;
-    top: 200px;
-    left: 650px;
+    top: 230px;
+    width: 50%;
+    /* left: 650px; */
+}
+
+.cardtodo1 {
+    position: absolute;
+    top: 230px;
+    width: 50%;
+    /* left: 650px; */
+}
+
+.cardtodo2 {
+    position: absolute;
+    top: 230px;
+    width: 80%;
+    /* left: 650px; */
+}
+
+
+.cardtodo3 {
+    position: absolute;
+    top: 280px;
+    width: 100%;
+    /* left: 650px; */
 }
 
 #deleteBG {
@@ -83,6 +124,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 99;
 
     /* transition: transform .5s ease, height .5s ease; */
     transform: scale(0);

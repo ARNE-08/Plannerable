@@ -2,6 +2,7 @@ import React from 'react'
 // import { Box } from '@mui/material'
 import { Box, Typography, Grid, TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useState } from 'react';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,6 +14,38 @@ import Checkbox from '@mui/material/Checkbox';
 import '../styles/Register.css'
 
 function Register() {
+  const [username, setUsername] = useState('')
+  const [usernameError, setUsernameError] = useState('')
+
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
+
+  const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+
+  const validateForm = () => {
+    let isValid = true;
+    //check user
+    if (!username) {
+      setUsernameError('Username is required');
+      isValid = false;
+    }
+    //check email
+    if (!email) {
+      setEmailError('Email is required');
+      isValid = false;
+    }
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
+      setEmailError('Invalid email format');
+      isValid = false;
+    }
+    if (!password) {
+      setPasswordError('Password is required');
+      isValid = false;
+    }
+    return isValid;
+  }
+
   return (
     <Box class="RegisPage">
       <Grid
@@ -71,7 +104,11 @@ function Register() {
                 id="input-with-sx"
                 label="Username"
                 type={"text"}
-                // value={email}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                error={usernameError !== ''}
+                helperText={usernameError}
+
                 sx={{ width: '250px', position: 'relative', bottom: '105px' }}
                 variant="standard"
                 required
@@ -85,7 +122,11 @@ function Register() {
                 id="input-with-sx"
                 label="Email"
                 type={"email"}
-                // value={email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={emailError !== ''}
+                helperText={emailError}
+
                 sx={{ width: '250px', position: 'relative', bottom: '75px' }}
                 variant="standard"
                 required />
@@ -98,7 +139,11 @@ function Register() {
                 id="input-with-sx"
                 label="Password"
                 type={"password"}
-                // value={email}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                error={passwordError !== ''}
+                helperText={passwordError}
+
                 sx={{ width: '250px', position: 'relative', bottom: '45px' }}
                 variant="standard"
                 required
@@ -122,7 +167,7 @@ function Register() {
                     isActive ? (
                       <p className="active-link">Home</p>
                     ) : (
-                      <button class="loginBut">Register</button>
+                      <button class="loginBut">Signup</button>
                     )
                   }
                 </NavLink>
@@ -209,7 +254,7 @@ function Register() {
               />
             </Box>
 
-            <FormGroup sx={{ position: 'relative', bottom: '15px'}}>
+            <FormGroup sx={{ position: 'relative', bottom: '15px' }}>
               <FormControlLabel required control={<Checkbox
                 sx={{
                   color: 'action.active',

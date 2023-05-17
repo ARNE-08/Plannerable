@@ -18,8 +18,8 @@ function Profile() {
       />
       <Box class="ProfilePicture">
       </Box>
-      <Button class="profilebut pic">change profile picture</Button>
-      <Button class="profilebut out" component={Link} to="/">sign out</Button>
+      <Button class="profilebut pic">Change profile picture</Button>
+      <Button class="profilebut out" component={Link} to="/">Sign out</Button>
 
       {/* <Grid container direction="column" justifyContent="flex-start" sx={{ margin: "0", width: "200px" }}>
         <Grid item>
@@ -33,17 +33,17 @@ function Profile() {
         </Grid>
       </Grid> */}
 
-      <Typography class="user name">username : </Typography>
-      <Typography class="user mail">email : </Typography>
-      <Typography class="user pass">password : </Typography>
-      <Box sx={{
+      <Typography class="user name">Username : </Typography>
+      <Typography class="user mail">Email : </Typography>
+      <Typography class="user pass">Password : </Typography>
+      {/* <Box sx={{
         borderBottom: "2px dashed #D78B8B", width: "40%",
         position: "absolute", left: "420px", bottom: "300px"
       }}></Box>
-      <Typography class="setting">reminder setting</Typography>
-      <Typography class="show">show upcoming event</Typography>
-      <Typography class="show">show to-do list</Typography>
-      <Typography class="show">show weekly schedule</Typography>
+      <Typography class="setting">Reminder setting</Typography>
+      <Typography class="show">Show upcoming event</Typography>
+      <Typography class="show">Show to-do list</Typography>
+      <Typography class="show">Show weekly schedule</Typography>
       <FormGroup sx={{ position: 'absolute', bottom: '170px', left: "1000px" }}>
         <FormControlLabel control={<Checkbox defaultChecked
           sx={{
@@ -70,7 +70,7 @@ function Profile() {
               color: '#565656',
             },
           }} />} label="" />
-      </FormGroup>
+      </FormGroup> */}
 
       {/* <Checkbox defaultChecked />
       <Checkbox defaultChecked />

@@ -21,13 +21,13 @@ function Navbar() {
     //     setAuth(event.target.checked);
     // };
 
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+    // const handleMenu = (event) => {
+    //     setAnchorEl(event.currentTarget);
+    // };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    // const handleClose = () => {
+    //     setAnchorEl(null);
+    // };
 
     return (
         <Box class="Header">
@@ -42,7 +42,8 @@ function Navbar() {
             </Box>
 
             {/* <Grid item> */}
-            <Grid container direction="row" spacing={3} justifyContent="center" alignItems="center" sx={{ position: "relative", left: "300px" }}>
+            <Grid container direction="row" spacing={3} justifyContent="center" alignItems="center"
+                sx={{ position: "relative", left: "325px" }}>
                 <Grid item display={{ xs: "none", md: "block" }}>
                     <nav>
                         <NavLink replace to="/home" className="inactive-link">
@@ -69,42 +70,33 @@ function Navbar() {
                         </NavLink>
                     </nav>
                 </Grid>
-                <Grid item display={{ xs: "none", md: "block" }}>
+                <Grid item>
                     <nav>
-                        <NavLink replace to="/event" className="inactive-link">
+                        <NavLink replace to="/todoadd" className="inactive-link">
                             {({ isActive }) =>
                                 isActive ? (
-                                    <Typography variant='h5' className="active-link text">Events</Typography>
-                                ) : (
-                                    <Typography variant='h5' className="text">Events</Typography>
-                                )
+                                    <Box class="active-link Addbut">
+                                        <Button class="AddButton" component={Link} to="/todoadd"
+                                        // sx={{backgroundColor:"#B2A4FF", width:"100px", height:"40px", color:"white", borderRadius:"50px",
+                                        // cursor:"pointer"}}
+                                        >Add</Button>
+                                    </Box>) : (
+                                    <Box class="Addbut">
+                                        <Button class="AddButton" component={Link} to="/todoadd"
+                                        // sx={{backgroundColor:"#B2A4FF", width:"100px", height:"40px", color:"white", borderRadius:"50px",
+                                        // cursor:"pointer"}}
+                                        >Add</Button>
+                                    </Box>)
                             }
                         </NavLink>
                     </nav>
-                </Grid>
-                <Grid item>
-                    <Button class="Addbut" onClick={handleMenu}
-                    >Add</Button>
-
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                        // sx={{position:"absolute"}}
-                    >
-                        <MenuItem onClick={handleClose} component={Link} to="/todoadd">Add To-do</MenuItem>
-                        <MenuItem onClick={handleClose} component={Link} to="/eventadd">Add Event</MenuItem>
-                    </Menu>
+                    {/* <a href='/todoadd' class="Addbut">Add</a> */}
+                    {/* <Box class="Addbut">
+                        <Button class="AddButton" component={Link} to="/todoadd"
+                        // sx={{backgroundColor:"#B2A4FF", width:"100px", height:"40px", color:"white", borderRadius:"50px",
+                        // cursor:"pointer"}}
+                        >Add</Button>
+                    </Box> */}
                 </Grid>
                 <Grid item>
                     <nav>

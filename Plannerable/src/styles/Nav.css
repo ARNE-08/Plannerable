@@ -30,6 +30,7 @@
     width: 100%;
     position: relative;
     top: 15px;
+    left: 10px;
     /* left: 20px; */
     /* right: 330px; */
 }
@@ -60,9 +61,18 @@
     font-family: 'Coiny', cursive;
 }
 
+.AddButton {
+    /* background-color: #B2A4FF; */
+    color: white;
+    /* width: 100px;
+    height: 40px; */
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
 .Addbut {
     background-color: #B2A4FF;
-    color: white;
+    /* color: white; */
     outline: none;
     border: none;
     border-radius: 50px;
@@ -70,12 +80,20 @@
     height: 40px;
     width: 100px;
     font-family: 'Coiny', cursive;
-    font-size: 1.5em;
+    /* font-size: 1.5em;
+    text-decoration: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     transition: .3s;
 }
 
 .Addbut:hover {
+    background-color: #7560A2;
+}
+
+.active-link.Addbut {
     background-color: #7560A2;
 }
 

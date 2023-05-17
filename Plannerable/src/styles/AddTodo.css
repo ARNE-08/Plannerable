@@ -42,3 +42,34 @@
     background-color: #D78B8B;
     color: white;
 }
+
+.TodoForm {
+    text-align: left;
+}
+
+.Todolabel {
+    font-family: 'Coiny', cursive;
+    font-size: 1.5em;
+    color: #D78B8B;
+    margin-bottom: 40px;
+
+    position: relative;
+    bottom: 500px;
+    right: 470px;
+}
+
+.DeadlineInput {
+    position: absolute;
+    top: 230px;
+    left: 325px;
+}
+
+.TimeInput {
+    position: absolute;
+    top: 310px;
+    left: 285px;
+}
+
+/* .Addbut {
+    color: #7560A2;
+} */

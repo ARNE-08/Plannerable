@@ -5,8 +5,28 @@ import "../styles/Login.css";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { useState } from "react";
 
 function Login() {
+  const [usernameOrEmail, setUsernameOrEmail] = useState('')
+  const [usernameOrEmailError, setUsernameOrEmailError] = useState('')
+
+  const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+
+  const validateForm = () => {
+    let isValid = true;
+    if (!usernameOrEmail) {
+      setUsernameOrEmailError('Username or email is required');
+      isValid = false;
+    }
+    if (!password) {
+      setPasswordError('Password is required');
+      isValid = false;
+    }
+    return isValid;
+  };
+
   return (
     <Box class="loginPage">
       <Grid
@@ -62,9 +82,12 @@ function Login() {
               <TextField
                 // class="InputForm mail"
                 id="input-with-sx"
-                label="Email"
-                type={"email"}
-                // value={email}
+                label="Username or Email"
+                value={usernameOrEmail}
+                onChange={(e) => setUsernameOrEmail(e.target.value)}
+                error={usernameOrEmailError !== ''}
+                helperText={usernameOrEmailError}
+
                 sx={{ width: '250px', position: 'relative', bottom: '90px' }}
                 variant="standard"
                 required />
@@ -77,7 +100,11 @@ function Login() {
                 id="input-with-sx"
                 label="Password"
                 type={"password"}
-                // value={email}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                error={passwordError !== ''}
+                helperText={passwordError}
+
                 sx={{ width: '250px', position: 'relative', bottom: '60px' }}
                 variant="standard"
                 required

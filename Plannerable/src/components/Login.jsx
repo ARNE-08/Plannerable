@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Grid, TextField } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
@@ -8,19 +8,61 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState, useContext } from "react";
 import GlobalContext from '../context/GlobalContext';
 
-function Login({ setIsLogin }) {
-  const { user, setStatus } = useContext(GlobalContext);
+import { AxiosError } from "axios";
+import Axios from "../axios/AxiosInstance";
 
-  const [usernameOrEmail, setUsernameOrEmail] = useState('')
-  const [usernameOrEmailError, setUsernameOrEmailError] = useState('')
+function Login({ setIsLogin }) {
+  const { user, setUser } = useContext(GlobalContext);
+  const { status, setStatus } = useContext(GlobalContext);
+
+  const [username, setusername] = useState('')
+  const [usernameError, setusernameError] = useState('')
 
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
 
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    if (!validateForm()) return;
+    try {
+      const response = await Axios.post('/login', {
+        username,
+        password,
+      });
+      // console.log(response.data.success)
+      if (response.data.success) {
+        // setUser({
+        //   username: response.data.data.username,
+        // });
+        setStatus({
+          msg: 'Login successful',
+          severity: 'success'
+        });
+        navigate('/home');
+        // navigateToHome();
+      }
+    } catch (e) {
+      setusername('');
+      setPassword('');
+      if (e instanceof AxiosError) {
+        if (e.response)
+          return setStatus({
+            msg: e.response.data.error,
+            severity: 'error',
+          });
+      }
+      return setStatus({
+        msg: e.message,
+        severity: 'error',
+      });
+    }
+  };
+
   const validateForm = () => {
     let isValid = true;
-    if (!usernameOrEmail) {
-      setUsernameOrEmailError('Username or email is required');
+    if (!username) {
+      setusernameError('Username is required');
       isValid = false;
     }
     if (!password) {
@@ -84,23 +126,23 @@ function Login({ setIsLogin }) {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '85px', color: 'action.active', mr: 1, my: 0.5 }} />
+            <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '45px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
               // class="InputForm mail"
               id="input-with-sx"
-              label="Username or Email"
-              value={usernameOrEmail}
-              onChange={(e) => setUsernameOrEmail(e.target.value)}
-              error={usernameOrEmailError !== ''}
-              helperText={usernameOrEmailError}
+              label="Username"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
+              error={usernameError !== ''}
+              helperText={usernameError}
 
-              sx={{ width: '250px', position: 'relative', bottom: '90px' }}
+              sx={{ width: '250px', position: 'relative', bottom: '50px' }}
               variant="standard"
               required />
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <LockOutlinedIcon sx={{ position: 'relative', bottom: '50px', color: 'action.active', mr: 1, my: 0.5 }} />
+            <LockOutlinedIcon sx={{ position: 'relative', bottom: '15px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
               // class="InputForm pass"
               id="input-with-sx"
@@ -111,24 +153,14 @@ function Login({ setIsLogin }) {
               error={passwordError !== ''}
               helperText={passwordError}
 
-              sx={{ width: '250px', position: 'relative', bottom: '60px' }}
+              sx={{ width: '250px', position: 'relative', bottom: '20px' }}
               variant="standard"
               required
             />
           </Box>
 
           <Box class="Loginnav">
-            <nav>
-              <NavLink replace to="/home" className="inactive-link">
-                {({ isActive }) =>
-                  isActive ? (
-                    <p className="active-link">Home</p>
-                  ) : (
-                    <button class="loginBut">Login</button>
-                  )
-                }
-              </NavLink>
-            </nav>
+            <button class="loginBut" onClick={handleSubmit}>Login</button>
           </Box>
 
           <Box class='noacc' onClick={handleClick}>
@@ -161,44 +193,41 @@ function Login({ setIsLogin }) {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '85px', color: 'action.active', mr: 1, my: 0.5 }} />
+            <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '55px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
               // class="InputForm mail"
               id="input-with-sx"
-              label="Email"
-              type={"email"}
+              label="Username"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
+              error={usernameError !== ''}
+              helperText={usernameError}
               // value={email}
-              sx={{ width: '200px', position: 'relative', bottom: '90px' }}
+              sx={{ width: '200px', position: 'relative', bottom: '60px' }}
               variant="standard"
               required />
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <LockOutlinedIcon sx={{ position: 'relative', bottom: '50px', color: 'action.active', mr: 1, my: 0.5 }} />
+            <LockOutlinedIcon sx={{ position: 'relative', bottom: '25px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
               // class="InputForm pass"
               id="input-with-sx"
               label="Password"
               type={"password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={passwordError !== ''}
+              helperText={passwordError}
               // value={email}
-              sx={{ width: '200px', position: 'relative', bottom: '60px' }}
+              sx={{ width: '200px', position: 'relative', bottom: '30px' }}
               variant="standard"
               required
             />
           </Box>
 
           <Box class="Loginnav">
-            <nav>
-              <NavLink replace to="/home" className="inactive-link">
-                {({ isActive }) =>
-                  isActive ? (
-                    <p className="active-link">Home</p>
-                  ) : (
-                    <button class="loginBut">Login</button>
-                  )
-                }
-              </NavLink>
-            </nav>
+            <button class="loginBut" onClick={handleSubmit}>Login</button>
           </Box>
 
           <Box class='noacc' onClick={handleClick}>

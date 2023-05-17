@@ -19,7 +19,7 @@
 }
 
 .FormBox {
-    /* position: relative; */
+    position: relative;
     background: white;
     width: 400px;
     height: 400px;
@@ -35,7 +35,7 @@
 }
 
 .FormBox1 {
-    /* position: relative; */
+    position: relative;
     background: white;
     width: 330px;
     height: 400px;
@@ -46,6 +46,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 
@@ -70,15 +72,15 @@
 }
 
 .closenav {
-    position: relative;
-    right: 190px;
-    bottom: 105px;
+    position: absolute;
+    left: -40px;
+    top: -40px;
 }
 
 .closenav1 {
-    position: relative;
-    right: 160px;
-    bottom: 105px;
+    position: absolute;
+    left: -40px;
+    top: -40px;
 }
 
 .loginBut {
@@ -98,12 +100,12 @@
 
 .Loginnav {
     position: relative;
-    top: -10px;
+    top: 25px;
 }
 
 .noacc {
     position: relative;
-    top: 20px;
+    top: 40px;
 
     cursor: pointer;
 }

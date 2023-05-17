@@ -32,11 +32,12 @@ function Register({ setIsLogin }) {
   const handleSubmit = async () => {
     if (!validateForm()) return;
     try {
-      const response = await Axios.post('http://localhost:8000/regis', {
+      const response = await Axios.post('/regis', {
         username,
         email,
         password
       });
+      // console.log(response.data.success)
       if (response.data.success) {
         setIsLogin(true);
         setStatus({

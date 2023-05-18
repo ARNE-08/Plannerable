@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
 
 app.post("/login", require("./route/Login"));
 app.post("/regis", require("./route/Register"));
+app.get("/getAllTodos", require("./route/GetTodos"));
 
 app.post("/todoadd", (req, res) => {
     // The JSON body

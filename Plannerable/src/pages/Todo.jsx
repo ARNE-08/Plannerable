@@ -2,15 +2,30 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/Todo.css'
 import { Box, Typography, Button, Grid } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TodoCard from '../components/TodoCard'
 
+import { AxiosError } from "axios"
+import Axios from '../axios/AxiosInstance'
+
 function Todo() {
-  const [todo, setTodo] = useState([]);
-  const task1 = {
-    Name: "Mini project",
-    Deadline: "20 May 2023"
-  }
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    Axios.get("/getAllTodos")
+      .then((response) => {
+        const responseData = response.data;
+        if (responseData.success) {
+          setTodos(responseData.data);
+        } else {
+          // Handle unsuccessful response
+        }
+      })
+      .catch((error) => {
+        // Handle the error
+        console.error(error);
+      });
+  }, []);
 
   const popup = () => {
     document.getElementById("deleteBG").classList.add("popup")
@@ -43,13 +58,15 @@ function Todo() {
           <Box class="TitleBox">
             <Typography variant='h4' class="TodoText">Todo</Typography>
             <Box class="CountTodo">
-              {todo.length}
+              {todos.length}
             </Box>
             <Button class="but complete">complete all</Button>
             <Button class="but delete" onClick={popup}>delete all</Button>
 
             <Box class="cardtodo">
-              <TodoCard Task={task1} />
+              {todos.map((todo) => (
+                <TodoCard name={todo.name} deadline={todo.deadline} />
+              ))}
             </Box>
 
             <Box id="deleteBG">
@@ -72,13 +89,15 @@ function Todo() {
           <Box class="TitleBox">
             <Typography variant='h4' class="TodoText">Todo</Typography>
             <Box class="CountTodo">
-              {todo.length}
+              {todos.length}
             </Box>
             <Button class="but complete">complete all</Button>
             <Button class="but delete" onClick={popup}>delete all</Button>
 
             <Box class="cardtodo1">
-              <TodoCard Task={task1} />
+              {todos.map((todo) => (
+                <TodoCard name={todo.name} deadline={todo.deadline} />
+              ))}
             </Box>
 
             <Box id="deleteBG">
@@ -101,13 +120,15 @@ function Todo() {
           <Box class="TitleBox">
             <Typography variant='h4' class="TodoText">Todo</Typography>
             <Box class="CountTodo">
-              {todo.length}
+              {todos.length}
             </Box>
             <Button class="but complete">complete all</Button>
             <Button class="but delete" onClick={popup}>delete all</Button>
 
             <Box class="cardtodo2">
-              <TodoCard Task={task1} />
+              {todos.map((todo) => (
+                <TodoCard name={todo.name} deadline={todo.deadline} />
+              ))}
             </Box>
 
             <Box id="deleteBG">
@@ -132,7 +153,7 @@ function Todo() {
               <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center", height: "75px" }}>
                 <Typography variant='h4' class="TodoText">Todo</Typography>
                 <Box class="CountTodo">
-                  {todo.length}
+                  {todos.length}
                 </Box>
               </Box>
 
@@ -142,7 +163,9 @@ function Todo() {
               </Box>
 
               <Box class="cardtodo3">
-                <TodoCard Task={task1} />
+                {todos.map((todo) => (
+                  <TodoCard name={todo.name} deadline={todo.deadline} />
+                ))}
               </Box>
             </Box>
 

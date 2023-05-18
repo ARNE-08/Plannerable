@@ -5,7 +5,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
-function TodoCard(props) {
+function TodoCard({ name, deadline }) {
     return (
         <>
             <Grid container display={{ xs: "none", xl: "block" }}>
@@ -20,7 +20,7 @@ function TodoCard(props) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{props.Task.Name} | <strong> Deadline : </strong> {props.Task.Deadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {deadline}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon
@@ -42,7 +42,7 @@ function TodoCard(props) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{props.Task.Name} | <strong> Deadline : </strong> {props.Task.Deadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {deadline}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon
@@ -64,7 +64,7 @@ function TodoCard(props) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{props.Task.Name} | <strong> Deadline : </strong> {props.Task.Deadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {deadline}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon
@@ -86,7 +86,7 @@ function TodoCard(props) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{props.Task.Name}</Typography>
+                    <Typography class="todoname">{name}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon

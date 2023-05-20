@@ -43,6 +43,7 @@ app.patch("/changeProfilePic", require("./route/ChangeProfile"));
 app.get("/getProfilePic", require("./route/GetProfile"));
 app.patch("/completeAll", require("./route/Complete"));
 app.delete("/deleteAll", require("./route/DeleteAll"));
+app.get("/getUser", require("./route/GetUser"));
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));
 

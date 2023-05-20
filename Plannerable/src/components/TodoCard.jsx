@@ -5,7 +5,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
-function TodoCard({ name, deadline }) {
+function TodoCard({ name, deadline, time }) {
     const formattedDeadline = new Date(deadline).toLocaleDateString();
 
     return (
@@ -22,7 +22,7 @@ function TodoCard({ name, deadline }) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {formattedDeadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {formattedDeadline} | Time : {time}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon
@@ -44,7 +44,7 @@ function TodoCard({ name, deadline }) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {deadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {formattedDeadline} | Time : {time}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon
@@ -66,7 +66,7 @@ function TodoCard({ name, deadline }) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {deadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {formattedDeadline}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon

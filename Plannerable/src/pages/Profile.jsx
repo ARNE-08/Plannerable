@@ -19,6 +19,7 @@ function Profile() {
   const [profile, setProfile] = useState();
 
   const { status, setStatus } = useContext(GlobalContext)
+  const { user, setUser } = useContext(GlobalContext)
 
   useEffect(() => {
     Axios.get("/getProfilePic")
@@ -26,7 +27,20 @@ function Profile() {
         const responseData = response.data;
         if (responseData.success) {
           setProfile(responseData.data);
-          console.log(responseData.data.profile_picture);
+        } else {
+          // Handle unsuccessful response
+        }
+      })
+      .catch((error) => {
+        // Handle the error
+        console.error(error);
+      });
+
+    Axios.get("/getUser")
+      .then((response) => {
+        const responseData = response.data;
+        if (responseData.success) {
+          setUser(responseData.data);
         } else {
           // Handle unsuccessful response
         }
@@ -122,9 +136,9 @@ function Profile() {
         </Grid>
       </Grid> */}
 
-      <Typography class="user name">Username : </Typography>
-      <Typography class="user mail">Email : </Typography>
-      <Typography class="user pass">Password : </Typography>
+      <Typography class="user name">Username : {user.username}</Typography>
+      <Typography class="user mail">Email : {user.email}</Typography>
+      <Typography class="user pass">Password : ********</Typography>
       {/* <Box sx={{
         borderBottom: "2px dashed #D78B8B", width: "40%",
         position: "absolute", left: "420px", bottom: "300px"

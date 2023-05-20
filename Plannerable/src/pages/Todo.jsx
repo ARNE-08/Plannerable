@@ -2,14 +2,17 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/Todo.css'
 import { Box, Typography, Button, Grid } from '@mui/material'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import TodoCard from '../components/TodoCard'
 
 import { AxiosError } from "axios"
 import Axios from '../axios/AxiosInstance'
+import Cookies from 'js-cookie';
+import GlobalContext from '../context/GlobalContext'
 
 function Todo() {
   const [todos, setTodos] = useState([]);
+  const { status, setStatus } = useContext(GlobalContext)
 
   useEffect(() => {
     Axios.get("/getAllTodos")
@@ -37,6 +40,55 @@ function Todo() {
     document.getElementById("deleteAlert").classList.remove("popup")
   };
 
+  const handleComplete = async () => {
+    try {
+      // 2. call API to update note
+      const userToken = Cookies.get('UserToken');
+      const response = await Axios.patch(
+        '/completeAll',
+        {
+          headers: { Authorization: `Bearer ${userToken}` },
+        }
+      );
+      // 3. if successful, update note in state and close modal
+      if (response.data.success) {
+        setStatus({ severity: 'success', msg: 'Every task completed' });
+      }
+    } catch (error) {
+      // 4. if update note failed, check if error is from calling API or not
+      if (error instanceof AxiosError && error.response) {
+        setStatus({ severity: 'error', msg: error.response.data.error });
+      } else {
+        setStatus({ severity: 'error', msg: error.message });
+      }
+    }
+  }
+
+  const handleDelete = async () => {
+    try {
+      // 1. call API to delete note
+      const userToken = Cookies.get('UserToken');
+      const response = await Axios.delete('/deleteAll', {
+        headers: { Authorization: `Bearer ${userToken}` }
+      }
+      );
+      // 2. if successful, set status and remove note from state
+      if (response.data.success) {
+        setStatus({ severity: 'success', msg: 'Delete all task successfully' });
+        setTodos([])
+        closepopup();
+        // cancelAction();
+      }
+    } catch (error) {
+      // 3. if delete note failed, check if error is from calling API or not
+      if (error instanceof AxiosError && error.response) {
+        setStatus({ severity: 'error', msg: error.response.data.error });
+      } else {
+        setStatus({ severity: 'error', msg: error.message });
+      }
+    }
+  }
+
   return (
     <Box class="TodoPage">
       <Navbar />
@@ -60,7 +112,7 @@ function Todo() {
             <Box class="CountTodo">
               {todos.length}
             </Box>
-            <Button class="but complete">complete all</Button>
+            <Button class="but complete" onClick={handleComplete}>complete all</Button>
             <Button class="but delete" onClick={popup}>delete all</Button>
 
             <Box class="cardtodo">
@@ -78,7 +130,7 @@ function Todo() {
                   cannot be recovered</Typography>
                 <Box>
                   <Button class="warningbut can" onClick={closepopup}>cancel</Button>
-                  <Button class="warningbut del">delete</Button>
+                  <Button class="warningbut del" onClick={handleDelete}>delete</Button>
                 </Box>
               </Box>
             </Box>
@@ -91,7 +143,7 @@ function Todo() {
             <Box class="CountTodo">
               {todos.length}
             </Box>
-            <Button class="but complete">complete all</Button>
+            <Button class="but complete" onClick={handleComplete}>complete all</Button>
             <Button class="but delete" onClick={popup}>delete all</Button>
 
             <Box class="cardtodo1">
@@ -109,7 +161,7 @@ function Todo() {
                   cannot be recovered</Typography>
                 <Box>
                   <Button class="warningbut can" onClick={closepopup}>cancel</Button>
-                  <Button class="warningbut del">delete</Button>
+                  <Button class="warningbut del" onClick={handleDelete}>delete</Button>
                 </Box>
               </Box>
             </Box>
@@ -122,7 +174,7 @@ function Todo() {
             <Box class="CountTodo">
               {todos.length}
             </Box>
-            <Button class="but complete">complete all</Button>
+            <Button class="but complete" onClick={handleComplete}>complete all</Button>
             <Button class="but delete" onClick={popup}>delete all</Button>
 
             <Box class="cardtodo2">
@@ -140,7 +192,7 @@ function Todo() {
                   cannot be recovered</Typography>
                 <Box>
                   <Button class="warningbut can" onClick={closepopup}>cancel</Button>
-                  <Button class="warningbut del">delete</Button>
+                  <Button class="warningbut del" onClick={handleDelete}>delete</Button>
                 </Box>
               </Box>
             </Box>
@@ -158,7 +210,7 @@ function Todo() {
               </Box>
 
               <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <Button class="but complete1">complete all</Button>
+                <Button class="but complete1" onClick={handleComplete}>complete all</Button>
                 <Button class="but delete1" onClick={popup}>delete all</Button>
               </Box>
 
@@ -178,7 +230,7 @@ function Todo() {
                   cannot be recovered</Typography>
                 <Box>
                   <Button class="warningbut can" onClick={closepopup}>cancel</Button>
-                  <Button class="warningbut del">delete</Button>
+                  <Button class="warningbut del" onClick={handleDelete}>delete</Button>
                 </Box>
               </Box>
             </Box>

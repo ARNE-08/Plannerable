@@ -13,8 +13,8 @@
     top: 200px;
     left: 110px;
 
-    background: url(/src/assets/TempProfile.jpg) no-repeat;
-    background-size: cover;
+    /* background: url(/src/assets/TempProfile.jpg) no-repeat;
+    background-size: cover; */
 }
 
 .profilebut {

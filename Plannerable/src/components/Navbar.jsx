@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/Nav.css';
+
+import { AxiosError } from 'axios';
+import Axios from '../axios/AxiosInstance'
+import { useState, useEffect } from 'react';
 // import { display, fontSize } from '@mui/system';
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 // import Switch from '@mui/material/Switch';
@@ -14,8 +18,10 @@ import '../styles/Nav.css';
 
 
 function Navbar() {
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    // const [auth, setAuth] = React.useState(true);
+    // const [anchorEl, setAnchorEl] = React.useState(null);
+    const [profile, setProfile] = useState();
+
 
     // const handleChange = (event) => {
     //     setAuth(event.target.checked);
@@ -28,6 +34,52 @@ function Navbar() {
     // const handleClose = () => {
     //     setAnchorEl(null);
     // };
+
+    // useEffect(() => {
+    //     Axios.get("/getProfilePic")
+    //         .then((response) => {
+    //             const responseData = response.data;
+    //             if (responseData.success) {
+    //                 setProfile(responseData.data);
+    //                 console.log(responseData.data.profile_picture);
+    //             } else {
+    //                 // Handle unsuccessful response
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             // Handle the error
+    //             console.error(error);
+    //         });
+    // }, []);
+
+    useEffect(() => {
+        const fetchProfilePic = async () => {
+            try {
+                const response = await Axios.get('/getProfilePic');
+                const responseData = response.data;
+                if (responseData.success) {
+                    setProfile(responseData.data);
+                    console.log(responseData.data.profile_picture);
+                } else {
+                    // Handle unsuccessful response
+                }
+            } catch (error) {
+                // Handle the error
+                console.error(error);
+            }
+        };
+
+        // Fetch profile picture initially
+        fetchProfilePic();
+
+        // Poll for profile picture updates every 5 seconds
+        const intervalId = setInterval(fetchProfilePic, 5000);
+
+        return () => {
+            // Cleanup the interval on component unmount
+            clearInterval(intervalId);
+        };
+    }, []);
 
     return (
         <Box class="Header">
@@ -103,9 +155,9 @@ function Navbar() {
                         <NavLink replace to="/Profile" className="inactive-link">
                             {({ isActive }) =>
                                 isActive ? (
-                                    <img src="/src/assets/TempProfile.jpg" alt="" className="active-link ProfilePic" />
+                                    <img src={profile?.profile_picture} alt="" className="active-link ProfilePic" />
                                 ) : (
-                                    <img src="/src/assets/TempProfile.jpg" alt="" className="ProfilePic" />
+                                    <img src={profile?.profile_picture} alt="" className="ProfilePic" />
                                 )
                             }
                         </NavLink>

@@ -6,6 +6,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
 function TodoCard({ name, deadline }) {
+    const formattedDeadline = new Date(deadline).toLocaleDateString();
+
     return (
         <>
             <Grid container display={{ xs: "none", xl: "block" }}>
@@ -20,7 +22,7 @@ function TodoCard({ name, deadline }) {
                                 // zIndex:"99"
                             }} />} label="" />
                     </FormGroup>
-                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {deadline}</Typography>
+                    <Typography class="todoname">{name} | <strong> Deadline : </strong> {formattedDeadline}</Typography>
                     <Box class="deletebut">
                         <Box class="deleteicon">
                             <DeleteOutlineRoundedIcon

@@ -1,12 +1,95 @@
 import React from 'react'
+import { useEffect, useState, useContext } from 'react';
 import Navbar from '../components/Navbar'
-import { Box, Button, Typography, Grid, Checkbox } from '@mui/material'
+import { Box, Button, Typography, Grid, Checkbox, Modal, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import '../styles/Profile.css'
 
+import { AxiosError } from 'axios';
+import Axios from '../axios/AxiosInstance'
+import GlobalContext from '../context/GlobalContext';
+import Cookies from 'js-cookie';
+
 function Profile() {
+  const [open, setOpen] = useState(false);
+  const [profilePicture, setProfilePicture] = useState();
+  const [profilePictureError, setProfilePictureError] = useState('');
+  const [profile, setProfile] = useState();
+
+  const { status, setStatus } = useContext(GlobalContext)
+
+  useEffect(() => {
+    Axios.get("/getProfilePic")
+      .then((response) => {
+        const responseData = response.data;
+        if (responseData.success) {
+          setProfile(responseData.data);
+          console.log(responseData.data.profile_picture);
+        } else {
+          // Handle unsuccessful response
+        }
+      })
+      .catch((error) => {
+        // Handle the error
+        console.error(error);
+      });
+  }, []);
+
+
+  const handleOpenModal = () => {
+    setOpen(true);
+  };
+  const handleCloseModal = () => {
+    setOpen(false);
+  };
+
+  // const handleProfilePictureChange = (event) => {
+  //   setProfilePicture(event.target.value);
+  // };
+
+  const handleSubmit = async () => {
+    if (!validateForm()) return;
+    try {
+      // 2. call API to update note
+      const userToken = Cookies.get('UserToken');
+      const response = await Axios.patch(
+        '/changeProfilePic',
+        {
+          profile_picture: profilePicture
+        },
+        {
+          headers: { Authorization: `Bearer ${userToken}` },
+        }
+      );
+      // 3. if successful, update note in state and close modal
+      if (response.data.success) {
+        setProfile((prevProfile) => ({ ...prevProfile, profile_picture: profilePicture }));
+        setStatus({ severity: 'success', msg: 'Update profile successfully' });
+        handleCloseModal();
+      }
+    } catch (error) {
+      // 4. if update note failed, check if error is from calling API or not
+      if (error instanceof AxiosError && error.response) {
+        setStatus({ severity: 'error', msg: error.response.data.error });
+      } else {
+        setStatus({ severity: 'error', msg: error.message });
+      }
+    }
+
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    //check user
+    if (!profilePicture) {
+      setProfilePictureError('Profile URL is required');
+      isValid = false;
+    }
+    return isValid;
+  }
+
   return (
     <Box>
       <Navbar />
@@ -16,9 +99,15 @@ function Profile() {
         alt="Background"
         src="/src/assets/ProfileFolder.png"
       />
-      <Box class="ProfilePicture">
-      </Box>
-      <Button class="profilebut pic">Change profile picture</Button>
+      <Box
+        class="ProfilePicture"
+        component='img'
+        alt="Background"
+        src={profile?.profile_picture}
+      />
+      {/* <Box class="ProfilePicture">
+      </Box> */}
+      <Button class="profilebut pic" onClick={handleOpenModal}>Change profile picture</Button>
       <Button class="profilebut out" component={Link} to="/">Sign out</Button>
 
       {/* <Grid container direction="column" justifyContent="flex-start" sx={{ margin: "0", width: "200px" }}>
@@ -81,8 +170,22 @@ function Profile() {
         component='img'
         alt="Background"
         src="/src/assets/ProfileRab.png"
-        display={{xs:"none", md:"block"}}
+        display={{ xs: "none", md: "block" }}
       />
+
+      <Modal open={open} onClose={handleCloseModal}>
+        <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', p: 4, width: 400 }}>
+          <TextField
+            label="Profile Picture URL"
+            value={profilePicture}
+            onChange={(e) => setProfilePicture(e.target.value)}
+            error={profilePictureError !== ''}
+            helperText={profilePictureError}
+            // onChange={handleProfilePictureChange} 
+            fullWidth />
+          <Button onClick={handleSubmit}>Submit</Button>
+        </Box>
+      </Modal>
     </Box>
   )
 }

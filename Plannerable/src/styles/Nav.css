@@ -99,6 +99,7 @@
 
 .ProfilePic {
     border-radius: 50%;
+    width: 60px;
     height: 60px;
     border: 5px solid #B2A4FF;
 

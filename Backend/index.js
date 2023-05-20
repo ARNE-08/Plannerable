@@ -39,6 +39,12 @@ app.get("/", (req, res) => {
 app.post("/login", require("./route/Login"));
 app.post("/regis", require("./route/Register"));
 app.get("/getAllTodos", require("./route/GetTodos"));
+app.patch("/changeProfilePic", require("./route/ChangeProfile"));
+app.get("/getProfilePic", require("./route/GetProfile"));
+app.patch("/completeAll", require("./route/Complete"));
+app.delete("/deleteAll", require("./route/DeleteAll"));
+//unfinish
+app.get("/geTodoStatus", require("./route/GetStatus"));
 
 app.post("/todoadd", (req, res) => {
     // The JSON body

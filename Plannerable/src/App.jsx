@@ -9,6 +9,7 @@ import Profile from './pages/Profile'
 import EditNote from './pages/EditNote'
 import AddTodo from './pages/AddTodo'
 import Auth from './pages/Auth'
+import SnackBarMessage from './components/SnackBarMessage'
 import { Box } from '@mui/material'
 import GlobalContext from '/src/context/GlobalContext'
 
@@ -18,13 +19,20 @@ function App() {
   const [status, setStatus] = useState('');
   const [user, setUser] = useState();
 
+  const [appear, setAppear] = useState(false);
+
   const globalContextValue = useMemo(() => {
     return {
       user,
+      status,
       setUser,
       setStatus,
     };
   }, [user]);
+
+  const generatekey = () => {
+    return Math.random();
+  };
 
   return (
     <GlobalContext.Provider value={globalContextValue}>
@@ -43,6 +51,22 @@ function App() {
   <Route path="/admin" element={<Admin userLogin={userLogin} setuserLogin={setuserLogin} />} /> */}
         <Route path="*" element={<Error />} />
       </Routes>
+
+      {appear ? (
+        <Auth />
+      ) : null}
+      {appear ? (
+        <Home />
+      ) : null}
+      {appear ? (
+        <Todo />
+      ) : null}
+      {appear ? (
+        <Profile />
+      ) : null}
+      {appear ? (
+        <SnackBarMessage key={generatekey()} open={status.open} severity={status.severity} message={status.msg} />
+      ) : null}
     </GlobalContext.Provider>
   )
 }

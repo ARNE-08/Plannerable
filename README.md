@@ -168,13 +168,18 @@ Example
 #### Success
 
 ###### Status Code
-` 200`  found todos
+` 200`  success
 
 Response
 
 | Parameter | Type | Description |
 |----------|:-------------:|:------|
-| no parameter | Array of todo | all todos related to user |
+|id|String| id of Todo|
+|name|String|name
+|deadline|date| deadline|
+|time|time|time
+|description|String| description (can be null)|
+|status|String|todo status
 
 #### todo
 the todo object

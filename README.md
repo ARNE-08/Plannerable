@@ -147,7 +147,7 @@ Example
         "deadline": "2566-05-17",
         "time": "21:16:35",
         "description": null,
-        "status": "completed"
+        "status": "not complete"
     }
 ]
 
@@ -191,7 +191,52 @@ Example
         "deadline": "2566-05-17",
         "time": "21:16:35",
         "description": null,
-        "status": "completed"
+        "status": "not complete"
+    }
+]
+
+```
+
+### EditTodo
+#### URL
+`PATCH /editTodo`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|name|String|name
+|deadline|date| deadline|
+|time|time|time
+|description|String| description (can be null)|
+|id|String|todo id
+
+#### Success
+
+###### Status Code
+` 200`  success
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|id|String| id of Todo|
+|name|String|name
+|deadline|date| deadline|
+|time|time|time
+|description|String| description (can be null)|
+|status|String|todo status
+
+Example
+```
+[
+    {
+        "id": 4,
+        "user_id": 9,
+        "name": "Todo1",
+        "deadline": "2566-05-17",
+        "time": "21:16:35",
+        "description": null,
+        "status": "not complete"
     }
 ]
 

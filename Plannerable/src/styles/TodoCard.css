@@ -51,4 +51,22 @@
     position: absolute;
     right: -35px;
     top: 0px;
+    z-index: 99;
 }
+
+.DateMargin {
+    margin-bottom: 10px;
+}
+
+.TimeMargin {
+    margin-bottom: 17px;
+}
+/* .EditPopup {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 200;
+
+    width: 100vw;
+    height: 100vh;
+} */

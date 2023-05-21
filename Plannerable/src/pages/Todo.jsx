@@ -117,7 +117,7 @@ function Todo() {
 
             <Box class="cardtodo">
               {todos.map((todo) => (
-                <TodoCard name={todo.name} deadline={todo.deadline} time={todo.time} />
+                <TodoCard todo={todo} />
               ))}
             </Box>
 
@@ -148,7 +148,7 @@ function Todo() {
 
             <Box class="cardtodo1">
               {todos.map((todo) => (
-                <TodoCard name={todo.name} deadline={todo.deadline} time={todo.time} />
+                <TodoCard todo={todo} />
               ))}
             </Box>
 
@@ -179,7 +179,7 @@ function Todo() {
 
             <Box class="cardtodo2">
               {todos.map((todo) => (
-                <TodoCard name={todo.name} deadline={todo.deadline} time={todo.time} />
+                <TodoCard todo={todo} />
               ))}
             </Box>
 
@@ -216,7 +216,7 @@ function Todo() {
 
               <Box class="cardtodo3">
                 {todos.map((todo) => (
-                  <TodoCard name={todo.name} deadline={todo.deadline} time={todo.time} />
+                  <TodoCard todo={todo} />
                 ))}
               </Box>
             </Box>

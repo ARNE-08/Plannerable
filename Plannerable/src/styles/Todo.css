@@ -91,6 +91,7 @@
     top: 230px;
     width: 50%;
     /* left: 650px; */
+    cursor: pointer;
 }
 
 .cardtodo1 {
@@ -98,6 +99,7 @@
     top: 230px;
     width: 50%;
     /* left: 650px; */
+    cursor: pointer;
 }
 
 .cardtodo2 {
@@ -105,6 +107,7 @@
     top: 230px;
     width: 80%;
     /* left: 650px; */
+    cursor: pointer;
 }
 
 
@@ -113,6 +116,7 @@
     top: 280px;
     width: 100%;
     /* left: 650px; */
+    cursor: pointer;
 }
 
 #deleteBG {

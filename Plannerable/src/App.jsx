@@ -10,6 +10,7 @@ import EditNote from './pages/EditNote'
 import AddTodo from './pages/AddTodo'
 import Auth from './pages/Auth'
 import SnackBarMessage from './components/SnackBarMessage'
+import EditTodo from './pages/EditTodo'
 import { Box } from '@mui/material'
 import GlobalContext from '/src/context/GlobalContext'
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/noteedit" element={<EditNote />} />
         <Route path="/todoadd" element={<AddTodo />} />
+        <Route path="/todoedit" element={<EditTodo />} />
         {/* <Route exect path="/" element={<Home userLogin={userLogin} setuserLogin={setuserLogin} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

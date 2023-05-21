@@ -23,6 +23,10 @@ function AddTodo() {
 
   const navigate = useNavigate();
 
+  const handleCancel = () => {
+    navigate('/todo')
+  }
+
   const handleDateChange = (date) => {
     setDeadline(date)
   }
@@ -103,7 +107,7 @@ function AddTodo() {
       <Box class="AddTodoBox">
         <Box class="AddBox"></Box>
         <Box sx={{ zIndex: "99" }}>
-          <Button class="addbut can">Cancel</Button>
+          <Button class="addbut can" onClick={handleCancel}>Cancel</Button>
           <Button class="addbut add" onClick={handleSubmit}>Add</Button>
         </Box>
 

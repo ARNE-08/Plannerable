@@ -44,42 +44,44 @@ app.get("/getProfilePic", require("./route/GetProfile"));
 app.patch("/completeAll", require("./route/Complete"));
 app.delete("/deleteAll", require("./route/DeleteAll"));
 app.get("/getUser", require("./route/GetUser"));
+app.post("/addTodo", require("./route/AddTodo"));
+app.patch("/editTodo", require("./route/EditTodo"));
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));
 
-app.post("/todoadd", (req, res) => {
-    // The JSON body
-    const { userId } = res.locals;
-    const { name, deadline, time, description } = req.body;
-    const status = "not complete";
+// app.post("/todoadd", (req, res) => {
+//     // The JSON body
+//     const { userId } = res.locals;
+//     const { name, deadline, time, description } = req.body;
+//     const status = "not complete";
 
-    connection.query(
-        `INSERT INTO todos (user_id, name, deadline, time, description, status) 
-         VALUES (?, ?, ?, ?, ?, ?)`, 
-        [userId, name, deadline, time, description, status], 
-        (err, rows) => {
-            // Check if cannot find the data in the database then return the error
-            if (err) {
-                res.json({
-                    success: false,
-                    data: null,
-                    error: err.message,
-                });
-            } else {
-                // Return data to the client if success
-                console.log(rows);
-                if (rows) {
-                    res.json({
-                        success: true,
-                        data: {
-                            message: "create success",
-                        },
-                    });
-                }
-            }
-        }
-    );
-});
+//     connection.query(
+//         `INSERT INTO todos (user_id, name, deadline, time, description, status) 
+//          VALUES (?, ?, ?, ?, ?, ?)`, 
+//         [userId, name, deadline, time, description, status], 
+//         (err, rows) => {
+//             // Check if cannot find the data in the database then return the error
+//             if (err) {
+//                 res.json({
+//                     success: false,
+//                     data: null,
+//                     error: err.message,
+//                 });
+//             } else {
+//                 // Return data to the client if success
+//                 console.log(rows);
+//                 if (rows) {
+//                     res.json({
+//                         success: true,
+//                         data: {
+//                             message: "create success",
+//                         },
+//                     });
+//                 }
+//             }
+//         }
+//     );
+// });
 
 
 app.listen(port, () => {

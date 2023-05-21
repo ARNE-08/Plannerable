@@ -12,6 +12,7 @@ function Auth() {
     const { user, setUser } = useContext(GlobalContext)
     const { status, setStatus } = useContext(GlobalContext)
 
+    // console.log(status)
     // const [status, setStatus] = useState('');
     // const [user, setUser] = useState();
 
@@ -33,11 +34,11 @@ function Auth() {
             {isLogin ? (
                 <Login setIsLogin={setIsLogin} />
             ) : (
-                <Register setIsLogin={setIsLogin} />
+                <Register setIsLogin={setIsLogin} setStatus={setStatus}/>
             )}
-            {status ? (
+            {/* {status ? (
                 <SnackBarMessage key={generatekey()} open={status.open} severity={status.severity} message={status.msg} />
-            ) : null}
+            ) : null} */}
         </Box>
     )
 }

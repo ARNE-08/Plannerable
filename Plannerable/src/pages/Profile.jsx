@@ -17,6 +17,7 @@ function Profile() {
   const [profilePicture, setProfilePicture] = useState();
   const [profilePictureError, setProfilePictureError] = useState('');
   const [profile, setProfile] = useState();
+  const [profileUser, setProfileUser] = useState([])
 
   const { status, setStatus } = useContext(GlobalContext)
   const { user, setUser } = useContext(GlobalContext)
@@ -40,7 +41,7 @@ function Profile() {
       .then((response) => {
         const responseData = response.data;
         if (responseData.success) {
-          setUser(responseData.data);
+          setProfileUser(responseData.data);
         } else {
           // Handle unsuccessful response
         }
@@ -136,8 +137,8 @@ function Profile() {
         </Grid>
       </Grid> */}
 
-      <Typography class="user name">Username : {user.username}</Typography>
-      <Typography class="user mail">Email : {user.email}</Typography>
+      <Typography class="user name">Username : {profileUser.username}</Typography>
+      <Typography class="user mail">Email : {profileUser.email}</Typography>
       <Typography class="user pass">Password : ********</Typography>
       {/* <Box sx={{
         borderBottom: "2px dashed #D78B8B", width: "40%",

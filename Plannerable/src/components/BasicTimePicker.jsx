@@ -4,11 +4,15 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-export default function BasicTimePicker() {
+export default function BasicTimePicker({ onTimeChange }) {
+  const handleTimeChange = (time) => {
+    onTimeChange(time);
+  };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['TimePicker']}>
-        <TimePicker label="" />
+        <TimePicker label="" onChange={handleTimeChange} />
       </DemoContainer>
     </LocalizationProvider>
   );

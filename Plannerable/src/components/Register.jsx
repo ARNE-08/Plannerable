@@ -17,8 +17,8 @@ import Checkbox from '@mui/material/Checkbox';
 
 import '../styles/Register.css'
 
-function Register({ setIsLogin }) {
-  const { user, setStatus } = useContext(GlobalContext);
+function Register({ setIsLogin, setStatus }) {
+  const { user } = useContext(GlobalContext);
 
   const [username, setUsername] = useState('')
   const [usernameError, setUsernameError] = useState('')
@@ -30,19 +30,29 @@ function Register({ setIsLogin }) {
   const [passwordError, setPasswordError] = useState('')
 
   const handleSubmit = async () => {
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      // console.log("work")
+      return;
+    }
     try {
       const response = await Axios.post('/regis', {
         username,
         email,
         password
       });
-      // console.log(response.data.success)
+      // console.log("work")
       if (response.data.success) {
         setIsLogin(true);
         setStatus({
           msg: 'Create account successfully',
           severity: 'success'
+        });
+      }
+      else {
+        console.log(response.data.error)
+        setStatus({
+          msg: response.data.error,
+          severity: 'error'
         });
       }
     } catch (e) {

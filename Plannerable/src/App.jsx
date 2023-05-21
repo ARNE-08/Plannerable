@@ -65,6 +65,9 @@ function App() {
         <Profile />
       ) : null}
       {appear ? (
+        <AddTodo />
+      ) : null}
+      {status ? (
         <SnackBarMessage key={generatekey()} open={status.open} severity={status.severity} message={status.msg} />
       ) : null}
     </GlobalContext.Provider>

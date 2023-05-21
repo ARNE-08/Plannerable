@@ -144,7 +144,7 @@ Example
         "id": 4,
         "user_id": 9,
         "name": "Todo1",
-        "deadline": "2566-05-17T17:00:00.000Z",
+        "deadline": "2566-05-17",
         "time": "21:16:35",
         "description": null,
         "status": "completed"
@@ -181,18 +181,6 @@ Response
 |description|String| description (can be null)|
 |status|String|todo status
 
-#### todo
-the todo object
-| Parameter | Type | Description |
-|----------|:-------------:|:------|
-| id | string | id of todo |
-| user_id | string | user id |
-| name | string | todo name |
-| deadline | date | todo deadline |
-| time | time | todo deadline time |
-| description | string | todo description |
-| status | string | todo status |
-
 Example
 ```
 [
@@ -200,7 +188,7 @@ Example
         "id": 4,
         "user_id": 9,
         "name": "Todo1",
-        "deadline": "2566-05-17T17:00:00.000Z",
+        "deadline": "2566-05-17",
         "time": "21:16:35",
         "description": null,
         "status": "completed"

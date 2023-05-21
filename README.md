@@ -208,7 +208,7 @@ Example
 |deadline|date| deadline|
 |time|time|time
 |description|String| description (can be null)|
-|id|String|todo id
+|id|String|id of todo
 
 #### Success
 

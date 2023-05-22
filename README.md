@@ -255,7 +255,6 @@ Example
 ###### Status Code
 ` 200`  deleted successfully
 
-Response
 no response body
 
 
@@ -273,5 +272,4 @@ no response body
 ###### Status Code
 ` 200`  deleted successfully
 
-Response
 no response body

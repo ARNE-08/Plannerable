@@ -36,17 +36,19 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
+//marked
 app.post("/login", require("./route/Login"));
 app.post("/regis", require("./route/Register"));
 app.get("/getAllTodos", require("./route/GetTodos"));
-app.patch("/changeProfilePic", require("./route/ChangeProfile"));
-app.get("/getProfilePic", require("./route/GetProfile"));
-app.patch("/completeAll", require("./route/Complete"));
-app.delete("/deleteAll", require("./route/DeleteAll"));
-app.get("/getUser", require("./route/GetUser"));
 app.post("/addTodo", require("./route/AddTodo"));
 app.patch("/editTodo", require("./route/EditTodo"));
 app.delete("/deleteTodo", require("./route/DeleteTodo"));
+app.delete("/deleteAll", require("./route/DeleteAll"));
+//unmark
+app.patch("/changeProfilePic", require("./route/ChangeProfile"));
+app.get("/getProfilePic", require("./route/GetProfile"));
+app.patch("/completeAll", require("./route/Complete"));
+app.get("/getUser", require("./route/GetUser"));
 app.patch("/completeTodo", require("./route/CompleteTodo"));
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));

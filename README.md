@@ -107,7 +107,7 @@ Response
 ` 200`  User has been created<br>
 no response body
 
-### getAllTodos
+### Get all Todos
 #### URL
 `GET /getAllTodos`
 
@@ -197,7 +197,7 @@ Example
 
 ```
 
-### EditTodo
+### Edit Todo
 #### URL
 `PATCH /editTodo`
 

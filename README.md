@@ -439,12 +439,7 @@ Response
 
 | Parameter | Type | Description |
 |----------|:-------------:|:------|
-|id|String| id of Todo|
-|name|String|name
-|deadline|date| deadline|
-|time|time|time
-|description|String| description (can be null)|
-|status|String|todo status
+|profile_picture|String| url of user profile picture|
 
 Example
 ```

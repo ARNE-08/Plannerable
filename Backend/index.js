@@ -44,12 +44,12 @@ app.post("/addTodo", require("./route/AddTodo"));
 app.patch("/editTodo", require("./route/EditTodo"));
 app.delete("/deleteTodo", require("./route/DeleteTodo"));
 app.delete("/deleteAll", require("./route/DeleteAll"));
+app.patch("/completeTodo", require("./route/CompleteTodo"));
+app.patch("/completeAll", require("./route/Complete"));
 //unmark
 app.patch("/changeProfilePic", require("./route/ChangeProfile"));
 app.get("/getProfilePic", require("./route/GetProfile"));
-app.patch("/completeAll", require("./route/Complete"));
 app.get("/getUser", require("./route/GetUser"));
-app.patch("/completeTodo", require("./route/CompleteTodo"));
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));
 

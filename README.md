@@ -257,7 +257,7 @@ Example
 
 no response body
 
-<br>
+
 ### Delete all Todos
 #### URL
 `DELETE /deleteAll`
@@ -273,3 +273,86 @@ no response body
 ` 200`  deleted successfully
 
 no response body
+
+
+### Complete Todo
+#### URL
+`PATCH /completeTodo`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|id|String|id of todo
+
+#### Success
+
+###### Status Code
+` 200`  success
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|id|String| id of Todo|
+|name|String|name
+|deadline|date| deadline|
+|time|time|time
+|description|String| description (can be null)|
+|status|String|todo status
+
+Example
+```
+[
+    {
+        "id": 4,
+        "user_id": 9,
+        "name": "Todo1",
+        "deadline": "2566-05-17",
+        "time": "21:16:35",
+        "description": null,
+        "status": "completed"
+    }
+]
+
+```
+
+### Complete All Todo
+#### URL
+`PATCH /completeAll`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+| no parameter | Array of todo | all todos related to user |
+
+#### Success
+
+###### Status Code
+` 200`  success
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|id|String| id of Todo|
+|name|String|name
+|deadline|date| deadline|
+|time|time|time
+|description|String| description (can be null)|
+|status|String|todo status
+
+Example
+```
+[
+    {
+        "id": 4,
+        "user_id": 9,
+        "name": "Todo1",
+        "deadline": "2566-05-17",
+        "time": "21:16:35",
+        "description": null,
+        "status": "completed"
+    }
+]
+
+```

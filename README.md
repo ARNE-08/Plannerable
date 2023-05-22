@@ -316,7 +316,7 @@ Example
 
 ```
 
-### Complete All Todo
+### Complete All Todos
 #### URL
 `PATCH /completeAll`
 
@@ -388,6 +388,69 @@ Example
     {
         "username": "user1",
         "email": "user1@gmail.com",
+    }
+]
+
+```
+
+### Get profile picture
+#### URL
+`GET /getProfilePic`
+
+#### Request Body 
+No Request Body
+
+#### Success
+
+###### Status Code
+` 200`  found todos
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|profile_picture|String| url of user profile picture|
+
+Example
+```
+[
+    {
+        "profile_picture": "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg",
+    }
+]
+
+```
+
+### Edit profile picture
+#### URL
+`PATCH /changeProfilePic`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|profile_picture|String| url of user profile picture|
+
+#### Success
+
+###### Status Code
+` 200`  success
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|id|String| id of Todo|
+|name|String|name
+|deadline|date| deadline|
+|time|time|time
+|description|String| description (can be null)|
+|status|String|todo status
+
+Example
+```
+[
+    {
+        "profile_picture": "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg",
     }
 ]
 

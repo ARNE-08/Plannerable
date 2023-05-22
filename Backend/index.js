@@ -46,10 +46,10 @@ app.delete("/deleteTodo", require("./route/DeleteTodo"));
 app.delete("/deleteAll", require("./route/DeleteAll"));
 app.patch("/completeTodo", require("./route/CompleteTodo"));
 app.patch("/completeAll", require("./route/Complete"));
-//unmark
-app.patch("/changeProfilePic", require("./route/ChangeProfile"));
-app.get("/getProfilePic", require("./route/GetProfile"));
 app.get("/getUser", require("./route/GetUser"));
+app.get("/getProfilePic", require("./route/GetProfile"));
+app.patch("/changeProfilePic", require("./route/ChangeProfile"));
+//unmark
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));
 

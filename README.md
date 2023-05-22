@@ -356,51 +356,7 @@ Example
 ]
 
 ```
-### Get all Todos
-#### URL
-`GET /getAllTodos`
 
-#### Request Body 
-No Request Body
-
-#### Success
-
-###### Status Code
-` 200`  found todos
-
-Response
-
-| Parameter | Type | Description |
-|----------|:-------------:|:------|
-| no parameter | Array of todo | all todos related to user |
-
-#### todo
-the todo object
-| Parameter | Type | Description |
-|----------|:-------------:|:------|
-| id | string | id of todo |
-| user_id | string | user id |
-| name | string | todo name |
-| deadline | date | todo deadline |
-| time | time | todo deadline time |
-| description | string | todo description |
-| status | string | todo status |
-
-Example
-```
-[
-    {
-        "id": 4,
-        "user_id": 9,
-        "name": "Todo1",
-        "deadline": "2566-05-17",
-        "time": "21:16:35",
-        "description": null,
-        "status": "not complete"
-    }
-]
-
-```
 ### Get user
 #### URL
 `GET /getUser`

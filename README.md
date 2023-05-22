@@ -257,7 +257,7 @@ Example
 
 no response body
 
-
+<br>
 ### Delete all Todos
 #### URL
 `DELETE /deleteAll`

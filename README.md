@@ -241,9 +241,25 @@ Example
 ]
 
 ```
+### Delete Todo
+#### URL
+`DELETE /deleteTodo`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+| id | String | id of todo |
+
+#### Success
+
+###### Status Code
+` 200`  deleted successfully
+
+Response
+no response body
 
 
-### deleteAllTodos
+### Delete all Todos
 #### URL
 `DELETE /deleteAll`
 

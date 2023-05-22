@@ -32,9 +32,7 @@ function Login({ setIsLogin }) {
       });
       // console.log(response.data.success)
       if (response.data.success) {
-        setUser({
-          username: response.data.username,
-        });
+        setUser(true);
         setStatus({
           msg: 'Login successful',
           severity: 'success'

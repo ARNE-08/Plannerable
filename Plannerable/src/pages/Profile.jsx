@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar'
 import { Box, Button, Typography, Grid, Checkbox, Modal, TextField } from '@mui/material'
 import { Link } from 'react-router-dom';
@@ -21,6 +22,12 @@ function Profile() {
 
   const { status, setStatus } = useContext(GlobalContext)
   const { user, setUser } = useContext(GlobalContext)
+
+  const navigate = useNavigate()
+
+  const handleBack = () => {
+      navigate('/')
+  }
 
   useEffect(() => {
     Axios.get("/getProfilePic")
@@ -105,27 +112,35 @@ function Profile() {
     return isValid;
   }
 
-  return (
-    <Box>
-      <Navbar />
-      <Box
-        class="ProfileBG"
-        component='img'
-        alt="Background"
-        src="/src/assets/ProfileFolder.png"
-      />
-      <Box
-        class="ProfilePicture"
-        component='img'
-        alt="Background"
-        src={profile?.profile_picture}
-      />
-      {/* <Box class="ProfilePicture">
-      </Box> */}
-      <Button class="profilebut pic" onClick={handleOpenModal}>Change profile picture</Button>
-      <Button class="profilebut out" component={Link} to="/">Sign out</Button>
+  const handlelogout = () => {
+    Cookies.remove('userToken');
+    navigate('/')
+  }
 
-      {/* <Grid container direction="column" justifyContent="flex-start" sx={{ margin: "0", width: "200px" }}>
+  return (
+    <div>
+      {user ? (
+        <div>
+          <Box>
+            <Navbar />
+            <Box
+              class="ProfileBG"
+              component='img'
+              alt="Background"
+              src="/src/assets/ProfileFolder.png"
+            />
+            <Box
+              class="ProfilePicture"
+              component='img'
+              alt="Background"
+              src={profile?.profile_picture}
+            />
+            {/* <Box class="ProfilePicture">
+      </Box> */}
+            <Button class="profilebut pic" onClick={handleOpenModal}>Change profile picture</Button>
+            <Button class="profilebut out" onClick={handlelogout}>Sign out</Button>
+
+            {/* <Grid container direction="column" justifyContent="flex-start" sx={{ margin: "0", width: "200px" }}>
         <Grid item>
           <Typography class="user name">username : </Typography>
         </Grid>
@@ -137,10 +152,10 @@ function Profile() {
         </Grid>
       </Grid> */}
 
-      <Typography class="user name">Username : {profileUser.username}</Typography>
-      <Typography class="user mail">Email : {profileUser.email}</Typography>
-      <Typography class="user pass">Password : ********</Typography>
-      {/* <Box sx={{
+            <Typography class="user name">Username : {profileUser.username}</Typography>
+            <Typography class="user mail">Email : {profileUser.email}</Typography>
+            <Typography class="user pass">Password : ********</Typography>
+            {/* <Box sx={{
         borderBottom: "2px dashed #D78B8B", width: "40%",
         position: "absolute", left: "420px", bottom: "300px"
       }}></Box>
@@ -176,32 +191,42 @@ function Profile() {
           }} />} label="" />
       </FormGroup> */}
 
-      {/* <Checkbox defaultChecked />
+            {/* <Checkbox defaultChecked />
       <Checkbox defaultChecked />
       <Checkbox defaultChecked /> */}
 
-      <Box
-        class="ProfileRab"
-        component='img'
-        alt="Background"
-        src="/src/assets/ProfileRab.png"
-        display={{ xs: "none", md: "block" }}
-      />
+            <Box
+              class="ProfileRab"
+              component='img'
+              alt="Background"
+              src="/src/assets/ProfileRab.png"
+              display={{ xs: "none", md: "block" }}
+            />
 
-      <Modal open={open} onClose={handleCloseModal}>
-        <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', p: 4, width: 400 }}>
-          <TextField
-            label="Profile Picture URL"
-            value={profilePicture}
-            onChange={(e) => setProfilePicture(e.target.value)}
-            error={profilePictureError !== ''}
-            helperText={profilePictureError}
-            // onChange={handleProfilePictureChange} 
-            fullWidth />
-          <Button onClick={handleSubmit}>Submit</Button>
-        </Box>
-      </Modal>
-    </Box>
+            <Modal open={open} onClose={handleCloseModal}>
+              <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', p: 4, width: 400 }}>
+                <TextField
+                  label="Profile Picture URL"
+                  value={profilePicture}
+                  onChange={(e) => setProfilePicture(e.target.value)}
+                  error={profilePictureError !== ''}
+                  helperText={profilePictureError}
+                  // onChange={handleProfilePictureChange} 
+                  fullWidth />
+                <Button onClick={handleSubmit}>Submit</Button>
+              </Box>
+            </Modal>
+          </Box>
+
+        </div>
+      ) :
+        (
+          (<div>
+            <p>Only login user are allowed</p>
+            <Button onClick={handleBack}>Back to splash screen</Button>
+          </div>)
+        )}
+    </div>
   )
 }
 

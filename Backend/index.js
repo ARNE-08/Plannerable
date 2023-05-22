@@ -46,6 +46,8 @@ app.delete("/deleteAll", require("./route/DeleteAll"));
 app.get("/getUser", require("./route/GetUser"));
 app.post("/addTodo", require("./route/AddTodo"));
 app.patch("/editTodo", require("./route/EditTodo"));
+app.delete("/deleteTodo", require("./route/DeleteTodo"));
+app.patch("/completeTodo", require("./route/CompleteTodo"));
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));
 

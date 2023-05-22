@@ -12,31 +12,35 @@ import TimePickerComponent from '../components/BasicTimePicker'
 
 import { AxiosError } from 'axios';
 import Axios from '../axios/AxiosInstance';
+import Cookies from 'js-cookie';
 import GlobalContext from '../context/GlobalContext';
 
-function TodoCard({ todo }) {
+function TodoCard({ todo, setTodos }) {
     const { status, setStatus } = useContext(GlobalContext)
 
     const formattedDeadline = new Date(todo.deadline).toLocaleDateString();
-    // const [edit, setEdit] = useState(false)
     const [open, setOpen] = useState(false);
-    // const [editName, setEditName] = useState('')
+    const [del, setDel] = useState(false)
     const [editNameError, setEditNameError] = useState('')
-    // const [editDeadline, setEditDeadline] = useState('')
-    // const [editTime, setEditTime] = useState('')
-    // const [editDescription, setEditDescription] = useState('')
     const [editDescriptionError, setEditDescriptionError] = useState('')
     const [deadline, setDeadline] = useState(null)
     const [todoTime, setodoTime] = useState(null)
     const [newTodo, setNewTodo] = useState(todo)
 
-    const navigate = useNavigate();
     const handleOpenEditModal = () => {
         setOpen(true);
     };
     const handleCloseEditModal = () => {
         setOpen(false);
     };
+
+    const handleOpenDeleteModal = () => {
+        setDel(true);
+    }
+
+    const handleCloseDeleteModal = () => {
+        setDel(false);
+    }
 
     const handleDateChange = (date) => {
         setDeadline(date)
@@ -132,6 +136,67 @@ function TodoCard({ todo }) {
         return isValid;
     }
 
+    const handleDelete = async () => {
+        try {
+            const userToken = Cookies.get('UserToken');
+            const response = await Axios.delete('/deleteTodo', {
+                headers: { Authorization: `Bearer ${userToken}` },
+                data: { id: todo.id }
+            });
+            if (response.data.success) {
+                setStatus({
+                    msg: 'To-do list has been delete',
+                    severity: 'success'
+                });
+                setTodos((todos) => todos.filter((t) => t.id !== todo.id));
+                handleCloseDeleteModal()
+            }
+            else {
+                console.log(response.data.error)
+                setStatus({
+                    msg: response.data.error,
+                    severity: 'error'
+                });
+            }
+        } catch (e) {
+            if (e instanceof AxiosError)
+                if (e.response)
+                    return setStatus({
+                        msg: e.response.data.error,
+                        severity: 'error',
+                    });
+            return setStatus({
+                msg: e.message,
+                severity: 'error',
+            });
+        }
+    }
+
+    const handleCompleteCard = async () => {
+        try {
+            // 2. call API to update note
+            const userToken = Cookies.get('UserToken');
+            const response = await Axios.patch(
+                '/completeTodo', { id: todo.id },
+                {
+                    headers: { Authorization: `Bearer ${userToken}` },
+                }
+            );
+            // 3. if successful, update note in state and close modal
+            if (response.data.success) {
+                setStatus({ severity: 'success', msg: 'Task completed' });
+                setTodos((todos) => todos.filter((t) => t.id !== todo.id));
+            }
+        } catch (error) {
+            // 4. if update note failed, check if error is from calling API or not
+            if (error instanceof AxiosError && error.response) {
+                setStatus({ severity: 'error', msg: error.response.data.error });
+            } else {
+                setStatus({ severity: 'error', msg: error.message });
+            }
+        }
+    }
+
     return (
         <div>
             <Grid container display={{ xs: "none", xl: "block" }}>
@@ -144,13 +209,19 @@ function TodoCard({ todo }) {
                                     color: '#B17F3F',
                                 },
                                 // zIndex:"99"
-                            }} />} label="" />
+                            }} />} label="" onChange={handleCompleteCard} />
                     </FormGroup>
                     <Typography class="todoname">{todo.name} | <strong> Deadline : </strong> {formattedDeadline} | Time : {todo.time}</Typography>
                     <Box class="deletebut" onClick={handleOpenEditModal}>
                         <Box class="deleteicon">
                             <EditIcon
-                                sx={{ color: "white", fontSize: "2em", position: "relative", right: "20px", top: "22px" }} />
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "67px" }} />
+                        </Box>
+                    </Box>
+                    <Box class="deletebut delete" onClick={handleOpenDeleteModal}>
+                        <Box class="delicon">
+                            <DeleteOutlineRoundedIcon
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "2.5px" }} />
                         </Box>
                     </Box>
                 </Box>
@@ -166,13 +237,19 @@ function TodoCard({ todo }) {
                                     color: '#B17F3F',
                                 },
                                 // zIndex:"99"
-                            }} />} label="" />
+                            }} />} label="" onChange={handleCompleteCard} />
                     </FormGroup>
                     <Typography class="todoname">{todo.name} | <strong> Deadline : </strong> {formattedDeadline} | Time : {todo.time}</Typography>
                     <Box class="deletebut" onClick={handleOpenEditModal}>
                         <Box class="deleteicon">
                             <EditIcon
-                                sx={{ color: "white", fontSize: "2em", position: "relative", right: "20px", top: "22px" }} />
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "67px" }} />
+                        </Box>
+                    </Box>
+                    <Box class="deletebut delete" onClick={handleOpenDeleteModal}>
+                        <Box class="delicon">
+                            <DeleteOutlineRoundedIcon
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "2.5px" }} />
                         </Box>
                     </Box>
                 </Box>
@@ -188,13 +265,19 @@ function TodoCard({ todo }) {
                                     color: '#B17F3F',
                                 },
                                 // zIndex:"99"
-                            }} />} label="" />
+                            }} />} label="" onChange={handleCompleteCard} />
                     </FormGroup>
                     <Typography class="todoname">{todo.name} | <strong> Deadline : </strong> {formattedDeadline}</Typography>
                     <Box class="deletebut" onClick={handleOpenEditModal}>
                         <Box class="deleteicon">
                             <EditIcon
-                                sx={{ color: "white", fontSize: "2em", position: "relative", right: "20px", top: "22px" }} />
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "67px" }} />
+                        </Box>
+                    </Box>
+                    <Box class="deletebut delete" onClick={handleOpenDeleteModal}>
+                        <Box class="delicon">
+                            <DeleteOutlineRoundedIcon
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "2.5px" }} />
                         </Box>
                     </Box>
                 </Box>
@@ -210,13 +293,19 @@ function TodoCard({ todo }) {
                                     color: '#B17F3F',
                                 },
                                 // zIndex:"99"
-                            }} />} label="" />
+                            }} />} label="" onChange={handleCompleteCard} />
                     </FormGroup>
                     <Typography class="todoname">{todo.name}</Typography>
                     <Box class="deletebut" onClick={handleOpenEditModal}>
                         <Box class="deleteicon">
                             <EditIcon
-                                sx={{ color: "white", fontSize: "2em", position: "relative", right: "20px", top: "22px" }} />
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "67px" }} />
+                        </Box>
+                    </Box>
+                    <Box class="deletebut delete" onClick={handleOpenDeleteModal}>
+                        <Box class="delicon">
+                            <DeleteOutlineRoundedIcon
+                                sx={{ color: "white", fontSize: "1.5em", position: "relative", right: "20px", top: "2.5px" }} />
                         </Box>
                     </Box>
                 </Box>
@@ -254,6 +343,51 @@ function TodoCard({ todo }) {
                         sx={{ marginBottom: "15px" }}
                         fullWidth />
                     <Button onClick={handleSubmit}>Save</Button>
+                </Box>
+            </Modal>
+
+            <Modal open={open} onClose={handleCloseEditModal}>
+                <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', p: 4, width: 400 }}>
+                    <h2 class="fontfam">Edit To-do</h2>
+                    <TextField
+                        required
+                        label="Name"
+                        id="outlined-required"
+                        // defaultValue={todo.name}
+                        value={newTodo.name}
+                        onChange={handleNameChange}
+                        error={editNameError !== ''}
+                        helperText={editNameError}
+
+                        sx={{ marginBottom: "10px" }}
+                        fullWidth />
+                    <div class="DateMargin">
+                        <MyDatePicker onDateChange={handleDateChange} />
+                    </div>
+                    <div class="TimeMargin">
+                        <TimePickerComponent onTimeChange={handleTimeChange} />
+                    </div>
+                    <TextField
+                        label="Description (optional)"
+                        id="outlined-required"
+                        // defaultValue={todo.description}
+                        value={newTodo.description}
+                        onChange={handleDescriptionChange}
+                        error={editDescriptionError !== ''}
+                        helperText={editDescriptionError}
+
+                        sx={{ marginBottom: "30px" }}
+                        fullWidth />
+                    <Button class="editbutton" onClick={handleSubmit}>Save</Button>
+                </Box>
+            </Modal>
+
+            <Modal open={del} onClose={handleCloseDeleteModal} sx={{ textAlign: "center" }}>
+                <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', p: 4, width: 400, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                    <h2 class="fontfam warn">Warning</h2>
+                    <p class="mar">deleted event / to-do list
+                        cannot be recovered</p>
+                    <Button class="editbutton" onClick={handleDelete}>Confirm</Button>
                 </Box>
             </Modal>
         </div>

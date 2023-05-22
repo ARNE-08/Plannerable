@@ -18,7 +18,7 @@ import GlobalContext from '/src/context/GlobalContext'
 function App() {
   // const [count, setCount] = useState(0)
   const [status, setStatus] = useState('');
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(false);
 
   const [appear, setAppear] = useState(false);
 
@@ -55,19 +55,13 @@ function App() {
       </Routes>
 
       {appear ? (
-        <Auth />
-      ) : null}
-      {appear ? (
-        <Home />
-      ) : null}
-      {appear ? (
-        <Todo />
-      ) : null}
-      {appear ? (
-        <Profile />
-      ) : null}
-      {appear ? (
-        <AddTodo />
+        <div>
+          <Auth />
+          <Home />
+          <Todo />
+          <Profile />
+          <AddTodo />
+        </div>
       ) : null}
       {status ? (
         <SnackBarMessage key={generatekey()} open={status.open} severity={status.severity} message={status.msg} />

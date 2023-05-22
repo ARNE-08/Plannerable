@@ -12,18 +12,6 @@ function Auth() {
     const { user, setUser } = useContext(GlobalContext)
     const { status, setStatus } = useContext(GlobalContext)
 
-    // console.log(status)
-    // const [status, setStatus] = useState('');
-    // const [user, setUser] = useState();
-
-    // const globalContextValue = useMemo(() => {
-    //     return {
-    //         user,
-    //         setUser,
-    //         setStatus,
-    //     };
-    // }, [user]);
-
     const generatekey = () => {
         return Math.random();
     };

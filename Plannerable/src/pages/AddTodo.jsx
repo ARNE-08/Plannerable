@@ -13,6 +13,7 @@ import GlobalContext from '../context/GlobalContext'
 
 function AddTodo() {
   const { status, setStatus } = useContext(GlobalContext)
+  const { user, setUser } = useContext(GlobalContext)
 
   const [name, setName] = useState('')
   const [nameError, setNameError] = useState('')
@@ -22,6 +23,10 @@ function AddTodo() {
   const [todoTime, setodoTime] = useState(null)
 
   const navigate = useNavigate();
+
+  const handleBack = () => {
+      navigate('/')
+  }
 
   const handleCancel = () => {
     navigate('/todo')
@@ -103,55 +108,57 @@ function AddTodo() {
 
   return (
     <>
-      <Navbar />
-      <Box class="AddTodoBox">
-        <Box class="AddBox"></Box>
-        <Box sx={{ zIndex: "99" }}>
-          <Button class="addbut can" onClick={handleCancel}>Cancel</Button>
-          <Button class="addbut add" onClick={handleSubmit}>Add</Button>
-        </Box>
+      {user ? (
+        <div>
+          <Navbar />
+          <Box class="AddTodoBox">
+            <Box class="AddBox"></Box>
+            <Box sx={{ zIndex: "99" }}>
+              <Button class="addbut can" onClick={handleCancel}>Cancel</Button>
+              <Button class="addbut add" onClick={handleSubmit}>Add</Button>
+            </Box>
 
-        <Box class="TodoForm">
-          <Typography class="Todolabel">Name : </Typography>
-          <TextField
-            id="standard-basic"
-            label=""
-            type={"text"}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            error={nameError !== ''}
-            helperText={nameError}
+            <Box class="TodoForm">
+              <Typography class="Todolabel">Name : </Typography>
+              <TextField
+                id="standard-basic"
+                label=""
+                type={"text"}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                error={nameError !== ''}
+                helperText={nameError}
 
-            variant="standard"
-            sx={{ position: "absolute", top: "170px", left: "290px", width: "1000px" }}
-          // color='#D78B8B'
-          />
+                variant="standard"
+                sx={{ position: "absolute", top: "170px", left: "290px", width: "1000px" }}
+              // color='#D78B8B'
+              />
 
-          <Typography class="Todolabel">Deadline : </Typography>
-          <Box class="DeadlineInput">
-            <MyDatePicker onDateChange={handleDateChange} />
-          </Box>
+              <Typography class="Todolabel">Deadline : </Typography>
+              <Box class="DeadlineInput">
+                <MyDatePicker onDateChange={handleDateChange} />
+              </Box>
 
-          <Typography class="Todolabel">Time : </Typography>
-          <Box class="TimeInput">
-            <TimePickerComponent onTimeChange={handleTimeChange} />
-          </Box>
+              <Typography class="Todolabel">Time : </Typography>
+              <Box class="TimeInput">
+                <TimePickerComponent onTimeChange={handleTimeChange} />
+              </Box>
 
-          <Typography class="Todolabel">Note (optional) : </Typography>
-          <TextField
-            id="standard-multiline-static"
-            multiline
-            rows={5}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            error={descriptionError !== ''}
-            helperText={descriptionError}
+              <Typography class="Todolabel">Note (optional) : </Typography>
+              <TextField
+                id="standard-multiline-static"
+                multiline
+                rows={5}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                error={descriptionError !== ''}
+                helperText={descriptionError}
 
-            variant="standard"
-            sx={{ position: "absolute", top: "407px", left: "400px", width: "900px" }}
-          />
-        </Box>
-        {/* <Grid container sx={{zIndex:"99"}} direction="row">
+                variant="standard"
+                sx={{ position: "absolute", top: "407px", left: "400px", width: "900px" }}
+              />
+            </Box>
+            {/* <Grid container sx={{zIndex:"99"}} direction="row">
           <Grid item>
             <Button class="addbut can">cancel</Button>
           </Grid>
@@ -159,9 +166,15 @@ function AddTodo() {
             <Button class="addbut add">add</Button>
           </Grid>
         </Grid> */}
-        {/* <Button class="addbut can">cancel</Button>
+            {/* <Button class="addbut can">cancel</Button>
         <Button class="addbut add">add</Button> */}
-      </Box>
+          </Box>
+        </div>
+      ) :
+        (<div>
+          <p>Only login user are allowed</p>
+          <Button onClick={handleBack}>Back to splash screen</Button>
+        </div>)}
     </>
   )
 }

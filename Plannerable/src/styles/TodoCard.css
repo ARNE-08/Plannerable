@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Amethysta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
 
 .Todocard {
     background-color: white;
@@ -50,7 +51,17 @@
     height: 100px;
     position: absolute;
     right: -35px;
-    top: 0px;
+    bottom: 34px;
+    z-index: 99;
+}
+
+.deletebut.delete {
+    background: #FFB4B4;
+    width: 100px;
+    height: 34px;
+    position: absolute;
+    right: -35px;
+    bottom: 0px;
     z-index: 99;
 }
 
@@ -60,6 +71,36 @@
 
 .TimeMargin {
     margin-bottom: 17px;
+}
+
+.editbutton {
+    background-color: #D78B8B;
+    color: white;
+    font-family: 'Coiny', cursive;
+    font-size: 1.3em;
+
+    border-radius: 50px;
+    border: none;
+    height: 40px;
+    width: 150px;
+
+    cursor: pointer;
+}
+
+.fontfam {
+    font-family: 'Coiny', cursive;
+}
+
+.fontfam.warn {
+    margin: 0px;
+    /* background-color: #B2A4FF;
+    width: 150px;
+    color: white;
+    border-radius: 20px; */
+}
+.mar {
+    font-size: 1.3em;
+    font-family: 'Amethysta', serif;
 }
 /* .EditPopup {
     position: absolute;

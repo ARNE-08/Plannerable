@@ -5,9 +5,9 @@ module.exports = async (req, res) => {
 	const { username, email, password } = req.body;
 	const profile = "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg";
 	const salt1 = await bcrypt.genSalt(10);
-	console.log("Salt #1: ", salt1);
+	// console.log("Salt #1: ", salt1);
 	const hash1 = await bcrypt.hash(password, salt1);
-	console.log("Hash #1: ", hash1);
+	// console.log("Hash #1: ", hash1);
 
 	// Check if username already exists
 	var checkUsernameQuery = mysql.format("SELECT * FROM users WHERE username = ? OR email = ?", [username, email]);

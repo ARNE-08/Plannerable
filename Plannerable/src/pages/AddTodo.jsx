@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { Box, Button, Grid, Typography, TextField } from '@mui/material'
 import '../styles/AddTodo.css'
@@ -24,8 +24,37 @@ function AddTodo() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // console.log(formattedDate)
+    Axios.get("/isLogin")
+      .then((response) => {
+        const responseData = response.data;
+        if (responseData.success) {
+          setUser(responseData.success);
+        } else {
+          // Handle unsuccessful response
+        }
+      })
+      .catch((error) => {
+        console.log("error")
+        if (error instanceof AxiosError) {
+          if (error.response) {
+            return setStatus({
+              msg: error.response.data.error,
+              severity: 'error',
+            });
+          }
+        }
+        return setStatus({
+          msg: error.message,
+          severity: 'error',
+        });
+      });
+  }, []);
+
+
   const handleBack = () => {
-      navigate('/')
+    navigate('/')
   }
 
   const handleCancel = () => {

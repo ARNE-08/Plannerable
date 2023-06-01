@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     const { username, password } = req.body;
 
 	var sql = mysql.format("SELECT * FROM users WHERE username = ?", [username]);
-	console.log("DEBUG: /basic/login => " + sql);
+	// console.log("DEBUG: /basic/login => " + sql);
 	connection.query(sql, (err, rows) => {
 		if (err) {
 			return res.json({

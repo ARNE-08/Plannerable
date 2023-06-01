@@ -49,7 +49,13 @@ app.patch("/completeAll", require("./route/Complete"));
 app.get("/getUser", require("./route/GetUser"));
 app.get("/getProfilePic", require("./route/GetProfile"));
 app.patch("/changeProfilePic", require("./route/ChangeProfile"));
+
 //unmark
+app.get("/getNote", require("./route/GetNote"));
+app.patch("/editNote", require("./route/EditNote"));
+app.get("/getTodayTodo", require("./route/GetTodayTodo"));
+app.get("/isLogin", require("./route/GetLogin"));
+
 //unfinish
 app.get("/geTodoStatus", require("./route/GetStatus"));
 

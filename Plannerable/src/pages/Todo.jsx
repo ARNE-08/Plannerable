@@ -20,10 +20,35 @@ function Todo() {
   const navigate = useNavigate()
 
   const handleBack = () => {
-      navigate('/')
+    navigate('/')
   }
 
   useEffect(() => {
+    Axios.get("/isLogin")
+      .then((response) => {
+        const responseData = response.data;
+        if (responseData.success) {
+          setUser(responseData.success);
+        } else {
+          // Handle unsuccessful response
+        }
+      })
+      .catch((error) => {
+        console.log("error")
+        if (error instanceof AxiosError) {
+          if (error.response) {
+            return setStatus({
+              msg: error.response.data.error,
+              severity: 'error',
+            });
+          }
+        }
+        return setStatus({
+          msg: error.message,
+          severity: 'error',
+        });
+      });
+
     Axios.get("/getAllTodos")
       .then((response) => {
         const responseData = response.data;
@@ -60,7 +85,7 @@ function Todo() {
   const handleComplete = async () => {
     try {
       // 2. call API to update note
-      const userToken = Cookies.get('UserToken');
+      const userToken = Cookies.get('user');
       const response = await Axios.patch(
         '/completeAll',
         {
@@ -85,7 +110,7 @@ function Todo() {
   const handleDelete = async () => {
     try {
       // 1. call API to delete note
-      const userToken = Cookies.get('UserToken');
+      const userToken = Cookies.get('user');
       const response = await Axios.delete('/deleteAll', {
         headers: { Authorization: `Bearer ${userToken}` }
       }

@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
-import EditTodo from '../pages/EditTodo';
+// import EditTodo from '../pages/EditTodo';
 import MyDatePicker from '../components/BasicDatePicker'
 import TimePickerComponent from '../components/BasicTimePicker'
 
@@ -138,7 +138,7 @@ function TodoCard({ todo, setTodos }) {
 
     const handleDelete = async () => {
         try {
-            const userToken = Cookies.get('UserToken');
+            const userToken = Cookies.get('user');
             const response = await Axios.delete('/deleteTodo', {
                 headers: { Authorization: `Bearer ${userToken}` },
                 data: { id: todo.id }
@@ -175,7 +175,7 @@ function TodoCard({ todo, setTodos }) {
     const handleCompleteCard = async () => {
         try {
             // 2. call API to update note
-            const userToken = Cookies.get('UserToken');
+            const userToken = Cookies.get('user');
             const response = await Axios.patch(
                 '/completeTodo', { id: todo.id },
                 {

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Amethysta&family=Coiny&display=swap');
+
+.Calendar {
+    position: absolute;
+    font-family: 'Coiny', cursive;
+    color: #B2A4FF;
+
+    font-size: 2em;
+    left: 250px;
+    top: 300px;
+}
+
+.BiggestBox {
+    background-color: white;
+    width: 465px;
+    border: 3px solid #FFB4B4;
+    height: 75px;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+.TodayCardTitle {
+    background-color: #FFB4B4;
+    width: 100px;
+    height: 35px;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.3em;
+    border-radius: 20px;
+
+    position: absolute;
+    top: -35px;
+    left: 20px;
+
+    font-family: 'Coiny', cursive;
+}
+
+.TodayCardBody {
+    margin-top: 25px;
+    font-size: 1.1em;
+    font-family: 'Amethysta', serif;
+}

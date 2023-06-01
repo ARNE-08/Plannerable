@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     // const { profile_picture } = req.body;
 
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
-    console.log(decoded);
+    // console.log(decoded);
 
     connection.query("UPDATE todos SET status = ? WHERE user_id = ? AND id = ?",
         [status, decoded.userId, id],

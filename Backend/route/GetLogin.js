@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
     // console.log(decoded);
 
-    connection.query("DELETE from todos WHERE user_id = ?", [decoded.userId], (err, rows) => {
+    connection.query("SELECT * FROM users WHERE id = ?", [decoded.userId], (err, rows) => {
         // Check if cannot find the data in the database then return the error
         if (err) {
             res.json({
@@ -18,9 +18,6 @@ module.exports = (req, res) => {
             // Return data to the client if success
             return res.json({
                 success: true,
-                data: {
-                    message: "delete successfully",
-                },
                 error: null,
             });
         }

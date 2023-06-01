@@ -1,13 +1,13 @@
-//unfinish
 var jwt = require("jsonwebtoken");
 
 module.exports = (req, res) => {
 	const token = req.cookies.user;
+	// const status = "not complete"
 
 	var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
 	// console.log(decoded);
 
-	connection.query("SELECT status FROM todos WHERE user_id = ?", [decoded.userId], (err, rows) => {
+	connection.query("SELECT user_note from note WHERE user_id = ?;", [decoded.userId], (err, rows) => {
 		// Check if cannot find the data in the database then return the error
 		if (err) {
 			res.json({

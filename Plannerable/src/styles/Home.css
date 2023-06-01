@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amethysta&family=Coiny&display=swap');
 
 .Homepage {
     background: url(/src/assets/Home.png) no-repeat;
@@ -16,6 +16,15 @@
 
     position: absolute;
     right: 35px;
+    top: 110px;
+
+    overflow: hidden;
+}
+
+.todaycardbox {
+    position: absolute;
+    right: 30px;
+    top: 40px;
 }
 
 .reminderTitle {
@@ -24,13 +33,15 @@
     margin: 0;
     color: #7560A2;
 
-    position: relative;
-    bottom: 20px;
-    left: 130px;
+    position: absolute;
+    top: 90px;
+    right: 170px;
 
     background-color: #FFFEF3;
     width: 270px;
     border-radius: 3.px;
+
+    z-index: 99;
 }
 
 .NoteTitle {
@@ -92,4 +103,22 @@
     position: absolute;
     bottom: 35px;
     right: 200px;
+}
+
+.divpos {
+    position: relative;
+}
+
+.divpos1 {
+    /* background-color: red; */
+    width: 340px;
+    position: absolute;
+    right: 60px;
+    top: -81px;
+    height: 170px;
+}
+
+.NoteBody {
+    font-family: 'Amethysta', serif;
+    text-align: start;
 }

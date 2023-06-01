@@ -2,14 +2,13 @@ var jwt = require("jsonwebtoken");
 
 module.exports = (req, res) => {
     const token = req.cookies.user;
-    const { name, deadline, time, description } = req.body;
-    const status = "not complete";
+    const { user_note } = req.body;
 
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
     // console.log(decoded);
 
-    connection.query("INSERT INTO todos (user_id, name, deadline, time, description, status) VALUES (?, ?, ?, ?, ?, ?)",
-        [decoded.userId, name, deadline, time, description, status],
+    connection.query("UPDATE note SET user_note = ? WHERE user_id = ?",
+        [user_note, decoded.userId],
         (err, rows) => {
             // Check if cannot find the data in the database then return the error
             if (err) {
@@ -22,7 +21,7 @@ module.exports = (req, res) => {
 
             res.json({
                 success: true,
-                message: "To-do list has been created",
+                message: "Note has been updated",
             });
         });
 };

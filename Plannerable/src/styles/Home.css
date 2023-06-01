@@ -25,6 +25,8 @@
     position: absolute;
     right: 30px;
     top: 40px;
+
+    /* text-align: center; */
 }
 
 .reminderTitle {
@@ -121,4 +123,12 @@
 .NoteBody {
     font-family: 'Amethysta', serif;
     text-align: start;
+}
+
+.nothing {
+    font-family: 'Amethysta', serif;
+    font-size: 1.2em;
+
+    position: relative;
+    right: 150px;
 }

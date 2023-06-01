@@ -177,10 +177,18 @@ function Home() {
                         </Typography>
                         <Box class="reminderBox">
                             <div className="todaycardbox">
-                                {todayTodo.map((todo) => (
-                                    <TodayCard name={todo.name} deadline={todo.deadline} />
-                                ))}
-                                {/* <TodayCard /> */}
+                                {todayTodo.length > 0 ? (
+                                    <div>
+                                        {
+                                            todayTodo.map((todo) => (
+                                                <TodayCard name={todo.name} deadline={todo.deadline} />
+                                            ))
+                                        }
+                                    </div>
+                                ) :
+                                    (
+                                        <Typography class="nothing">Nothing to do ...</Typography>
+                                    )}
                             </div>
                         </Box>
 

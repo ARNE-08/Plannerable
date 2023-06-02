@@ -233,7 +233,11 @@ function Todo() {
             </Grid>
 
             <Modal open={del} onClose={handleCloseDeleteModal} sx={{ textAlign: "center" }}>
-              <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', p: 4, width: 400, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+              <Box sx={{
+                position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                bgcolor: 'background.paper', p: 4, width: 400, display: "flex", flexDirection: "column",
+                justifyContent: "center", alignItems: "center", borderRadius: "20px"
+              }}>
                 <h2 class="fontfam warn">Warning</h2>
                 <p class="mar">deleted event / to-do list
                   cannot be recovered</p>

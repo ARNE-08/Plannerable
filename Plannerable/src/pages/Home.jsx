@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { Box, Typography, Button, TextField } from '@mui/material'
+import { Box, Typography, Button, TextField, Grid } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 import '../styles/Home.css'
@@ -169,7 +169,10 @@ function Home() {
                 <div>
                     <Box class="Homepage">
                         <Navbar />
-
+                        {/* <Grid container>
+                            <Grid item xs={6}></Grid>
+                            <Grid item xs={6}></Grid>
+                        </Grid> */}
                         <div className="Calendar">Calendar is coming soon...</div>
 
                         <Typography variant='h5' class="reminderTitle">

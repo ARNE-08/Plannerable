@@ -23,8 +23,11 @@
 
 .todaycardbox {
     position: absolute;
-    right: 30px;
-    top: 40px;
+    right: 20px;
+    top: 30px;
+    overflow-y: scroll;
+
+    height: 220px;
 
     /* text-align: center; */
 }

@@ -60,7 +60,7 @@ Response
 <!--Status code (normally 200) -->
 ###### Status Code
 <!-- STATUS BEHEAVIOR -->
-` 200`  Login credential is correct
+` 200`  success
 
 | Parameter | Type | Description |
 |----------|:-------------:|:------|
@@ -111,10 +111,9 @@ Response
 <!--Status code (normally 200) -->
 ###### Status Code
 <!-- STATUS BEHEAVIOR -->
-` 200`  User has been created<br>
+` 200`  success<br>
 no response body
 
-<br>
 ## CRUD operations
 ### Get all Todos
 #### URL
@@ -126,7 +125,7 @@ No Request Body
 #### Success
 
 ###### Status Code
-` 200`  found todos
+` 200` success
 
 Response
 
@@ -262,7 +261,7 @@ Example
 #### Success
 
 ###### Status Code
-` 200`  deleted successfully
+` 200`  success<br>
 
 no response body
 
@@ -279,7 +278,7 @@ no response body
 #### Success
 
 ###### Status Code
-` 200`  deleted successfully
+` 200`  success<br>
 
 no response body
 
@@ -376,7 +375,7 @@ No Request Body
 #### Success
 
 ###### Status Code
-` 200`  found todos
+` 200`  success
 
 Response
 
@@ -412,7 +411,7 @@ No Request Body
 #### Success
 
 ###### Status Code
-` 200`  found todos
+` 200`  success
 
 Response
 
@@ -459,3 +458,112 @@ Example
 ]
 
 ```
+
+
+### Get user's note
+#### URL
+`GET /getNote`
+
+#### Request Body 
+No Request Body
+
+#### Success
+
+###### Status Code
+` 200`  success
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|user_note|String| user's note|
+
+Example
+```
+[
+    {
+        "user_note": "This is note",
+    }
+]
+
+```
+
+
+### Edit note
+#### URL
+`PATCH /editNote`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|user_note|String| user's note|
+
+#### Success
+
+###### Status Code
+` 200`  success<br>
+no response body
+
+### Get today todo
+get to-do list than is not pass deadline
+#### URL
+`GET /getTodayTodo`
+
+#### Request Body 
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+|today|Date| today date|
+
+#### Success
+
+###### Status Code
+` 200`  success
+
+Response
+
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+| no parameter | Array of todayTodo | all todos related to user that is not pass deadline |
+
+#### todo
+the todo object
+| Parameter | Type | Description |
+|----------|:-------------:|:------|
+| id | string | id of todo |
+| user_id | string | user id |
+| name | string | todo name |
+| deadline | date | todo deadline |
+| time | time | todo deadline time |
+| description | string | todo description |
+| status | string | todo status |
+
+Example
+```
+[
+    {
+        "id": 4,
+        "user_id": 9,
+        "name": "Todo1",
+        "deadline": "2566-05-17",
+        "time": "21:16:35",
+        "description": null,
+        "status": "not complete"
+    }
+]
+
+```
+
+
+### Get user's note
+#### URL
+`GET /isLogin`
+
+#### Request Body 
+No Request Body
+
+#### Success
+
+###### Status Code
+` 200`  success<br>
+no response body
+

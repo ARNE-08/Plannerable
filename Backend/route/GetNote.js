@@ -17,7 +17,7 @@ module.exports = (req, res) => {
 			// Return data to the client if success
 			return res.json({
 				success: true,
-				data: rows[0],
+				data: rows,
 				error: null,
 			});
 		}

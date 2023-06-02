@@ -169,80 +169,81 @@ function Home() {
                 <div>
                     <Box class="Homepage">
                         <Navbar />
-                        {/* <Grid container>
-                            <Grid item xs={6}></Grid>
-                            <Grid item xs={6}></Grid>
-                        </Grid> */}
-                        <div className="Calendar">Calendar is coming soon...</div>
-
-                        <Typography variant='h5' class="reminderTitle">
-                            Today's reminder
-                        </Typography>
-                        <Box class="reminderBox">
-                            <div className="todaycardbox">
-                                {todayTodo.length > 0 ? (
-                                    <div>
-                                        {
-                                            todayTodo.map((todo) => (
-                                                <TodayCard name={todo.name} deadline={todo.deadline} />
-                                            ))
-                                        }
+                        <Grid container>
+                            <Grid item xs={12} xl={6} display={{ xs: 'none', xl: 'block' }}>
+                                <div className="Calendar">Calendar is coming soon...</div>
+                            </Grid>
+                            <Grid item xs={12} xl={6}>
+                                <Typography variant='h5' class="reminderTitle">
+                                    Today's reminder
+                                </Typography>
+                                <Box class="reminderBox">
+                                    <div className="todaycardbox">
+                                        {todayTodo.length > 0 ? (
+                                            <div>
+                                                {
+                                                    todayTodo.map((todo) => (
+                                                        <TodayCard name={todo.name} deadline={todo.deadline} />
+                                                    ))
+                                                }
+                                            </div>
+                                        ) :
+                                            (
+                                                <Typography class="nothing">Nothing to do ...</Typography>
+                                            )}
                                     </div>
-                                ) :
-                                    (
-                                        <Typography class="nothing">Nothing to do ...</Typography>
-                                    )}
-                            </div>
-                        </Box>
+                                </Box>
 
-                        <Box class="NoteBox">
-                            <Box class="EditNav">
-                                <button class="EditBut" onClick={handleSetEdit}>
-                                    <Box class="EditIcon">
-                                        <EditNoteRoundedIcon />
+                                <Box class="NoteBox">
+                                    <Box class="EditNav">
+                                        <button class="EditBut" onClick={handleSetEdit}>
+                                            <Box class="EditIcon">
+                                                <EditNoteRoundedIcon />
+                                            </Box>
+                                        </button>
                                     </Box>
-                                </button>
-                            </Box>
 
-                            <div class="divpos">
-                                <Typography variant='h5' class="NoteTitle">Note :</Typography>
-                                {isEdit ? (
-                                    <div class="divpos2">
-                                        <TextField
-                                            id="standard-multiline-static"
-                                            multiline
-                                            rows={4}
-                                            value={newNote.user_note}
-                                            onChange={(e) => setNewNote({ ...newNote, user_note: e.target.value })}
-                                            error={newNoteError !== ''}
-                                            helperText={newNoteError}
+                                    <div class="divpos">
+                                        <Typography variant='h5' class="NoteTitle">Note :</Typography>
+                                        {isEdit ? (
+                                            <div class="divpos2">
+                                                <TextField
+                                                    id="standard-multiline-static"
+                                                    multiline
+                                                    rows={4}
+                                                    value={newNote.user_note}
+                                                    onChange={(e) => setNewNote({ ...newNote, user_note: e.target.value })}
+                                                    error={newNoteError !== ''}
+                                                    helperText={newNoteError}
 
-                                            variant="standard"
-                                            sx={{ position: "absolute", top: "-69px", right: "70px", width: "330px" }}
-                                        />
-                                        <Button onClick={handleCancel}
-                                            sx={{ position: "absolute", right: "130px", top: "50px", background: "#D9D9D9", color: "#565656", borderRadius: "20px" }}
-                                        >
-                                            Cancel</Button>
-                                        <Button onClick={handleSaveEdit}
-                                            sx={{ position: "absolute", right: "60px", top: "50px", background: "#B2A4FF", color: "white", borderRadius: "20px" }}
-                                        >
-                                            Save</Button>
+                                                    variant="standard"
+                                                    sx={{ position: "absolute", top: "-69px", right: "70px", width: "330px" }}
+                                                />
+                                                <Button onClick={handleCancel}
+                                                    sx={{ position: "absolute", right: "130px", top: "50px", background: "#D9D9D9", color: "#565656", borderRadius: "20px" }}
+                                                >
+                                                    Cancel</Button>
+                                                <Button onClick={handleSaveEdit}
+                                                    sx={{ position: "absolute", right: "60px", top: "50px", background: "#B2A4FF", color: "white", borderRadius: "20px" }}
+                                                >
+                                                    Save</Button>
+                                            </div>
+                                        ) : (
+                                            <div class="divpos1">
+                                                <Typography class="NoteBody">{note.user_note}</Typography>
+                                            </div>
+                                        )}
                                     </div>
-                                ) : (
-                                    <div class="divpos1">
-                                        <Typography class="NoteBody">{note.user_note}</Typography>
-                                    </div>
-                                )}
-                            </div>
-                        </Box>
+                                </Box>
 
-                        <Box
-                            class="RabbitFoot"
-                            component='img'
-                            alt="Note"
-                            src="/src/assets/Foot.png"
-                        />
+                                <Box
+                                    class="RabbitFoot"
+                                    component='img'
+                                    alt="Note"
+                                    src="/src/assets/Foot.png"
+                                />
+                            </Grid>
+                        </Grid>
                     </Box>
                 </div>
             ) :

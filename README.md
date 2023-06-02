@@ -554,7 +554,8 @@ Example
 ```
 
 
-### Get user's note
+### Get is login
+check whether the user already logged in (check cookies)
 #### URL
 `GET /isLogin`
 

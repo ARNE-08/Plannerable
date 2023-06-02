@@ -114,6 +114,7 @@ Response
 ` 200`  User has been created<br>
 no response body
 
+## CRUD operations
 ### Get all Todos
 #### URL
 `GET /getAllTodos`

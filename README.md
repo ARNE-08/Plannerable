@@ -4,13 +4,20 @@ Plannerable is a planner, which allow the user to add and plan their task.
 This repository contain backend and frontend for Plannarable website.<br>
 
 ## Stack Technology
+
+| Frontend | Backend | Database |
+|----------|:-------:|---------:|
+| <img src="https://github.com/ARNE-08/Plannerable/assets/85389813/c2a0dada-bd94-459b-8635-a9f7f3b23886" width="100px"> | <img src="https://github.com/ARNE-08/Plannerable/assets/85389813/9c85557f-67a5-4dd2-a77b-0f3c5a3aae65" width="100px"> | <img src="https://github.com/ARNE-08/Plannerable/assets/85389813/2f5080da-52e9-426c-b1bf-899767c6c285" width="100px"> |
+| <img src="https://github.com/ARNE-08/Plannerable/assets/85389813/f6794638-1eb3-4558-9eab-758ae45547dc" width="100px"> | | |
+
+<!-- ## Stack Technology
 | Frontend | Backend | Database |
 |----------|:-------------:|:------|
 |![React](https://github.com/ARNE-08/Plannerable/assets/85389813/c2a0dada-bd94-459b-8635-a9f7f3b23886)
 |![NodeJS](https://github.com/ARNE-08/Plannerable/assets/85389813/9c85557f-67a5-4dd2-a77b-0f3c5a3aae65)
 | ![MariaDB](https://github.com/ARNE-08/Plannerable/assets/85389813/2f5080da-52e9-426c-b1bf-899767c6c285)
 |
-![Express](https://github.com/ARNE-08/Plannerable/assets/85389813/f6794638-1eb3-4558-9eab-758ae45547dc)
+![Express](https://github.com/ARNE-08/Plannerable/assets/85389813/f6794638-1eb3-4558-9eab-758ae45547dc) -->
 
 
 ## Functions

@@ -78,7 +78,7 @@ Example
 
 ```
 <!-- This is the special action of your end point (for example, sending the token) -->
-**noted: If success, the Response will be sent with cookie named UserToken**
+**noted: If success, the Response will be sent with cookie named user**
 
 #### URL
 <!-- Method /endpoint -->

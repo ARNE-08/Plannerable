@@ -14,7 +14,7 @@ This repository contain backend and frontend for Plannarable website.
 - Create / Read / Update / Delete user's to-do list
 
 ## Database schema
-![Database schema](https://github.com/ARNE-08/Plannerable/assets/85389813/29caf374-9725-43f8-8e5c-f1b2e0697060)
+![Database schema](https://github.com/ARNE-08/Plannerable/assets/85389813/d88a1c66-6dbf-4ea1-a1ac-0f8a46ae52da)
 
 ## To run the frontend and backend in developing mode 
 cd to Backend and Plannerable (for frontend) then run.

@@ -30,7 +30,6 @@ function Login({ setIsLogin }) {
         username,
         password,
       });
-      // console.log(response.data.success)
       if (response.data.success) {
         setUser(true);
         setStatus({
@@ -38,7 +37,6 @@ function Login({ setIsLogin }) {
           severity: 'success'
         });
         navigate('/home');
-        // navigateToHome();
       }
     } catch (e) {
       setusername('');
@@ -80,7 +78,6 @@ function Login({ setIsLogin }) {
       direction="column"
       justifyContent="center"
       alignItems="center"
-    // class="Form"
     >
       <Grid item xs={12} display={{ xs: "none", sm: "block" }}>
         <Box
@@ -126,7 +123,6 @@ function Login({ setIsLogin }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '45px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm mail"
               id="input-with-sx"
               label="Username"
               value={username}
@@ -142,7 +138,6 @@ function Login({ setIsLogin }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <LockOutlinedIcon sx={{ position: 'relative', bottom: '15px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm pass"
               id="input-with-sx"
               label="Password"
               type={"password"}
@@ -193,14 +188,12 @@ function Login({ setIsLogin }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '55px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm mail"
               id="input-with-sx"
               label="Username"
               value={username}
               onChange={(e) => setusername(e.target.value)}
               error={usernameError !== ''}
               helperText={usernameError}
-              // value={email}
               sx={{ width: '200px', position: 'relative', bottom: '60px' }}
               variant="standard"
               required />
@@ -209,7 +202,6 @@ function Login({ setIsLogin }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <LockOutlinedIcon sx={{ position: 'relative', bottom: '25px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm pass"
               id="input-with-sx"
               label="Password"
               type={"password"}
@@ -217,7 +209,6 @@ function Login({ setIsLogin }) {
               onChange={(e) => setPassword(e.target.value)}
               error={passwordError !== ''}
               helperText={passwordError}
-              // value={email}
               sx={{ width: '200px', position: 'relative', bottom: '30px' }}
               variant="standard"
               required

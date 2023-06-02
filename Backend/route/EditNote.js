@@ -5,7 +5,6 @@ module.exports = (req, res) => {
     const { user_note } = req.body;
 
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
-    // console.log(decoded);
 
     connection.query("UPDATE note SET user_note = ? WHERE user_id = ?",
         [user_note, decoded.userId],

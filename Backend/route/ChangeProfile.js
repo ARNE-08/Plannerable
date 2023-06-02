@@ -6,7 +6,6 @@ module.exports = (req, res) => {
     const { profile_picture } = req.body;
 
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
-    // console.log(decoded);
 
     connection.query("UPDATE users SET profile_picture = ? WHERE id = ?",
         [profile_picture, decoded.userId],

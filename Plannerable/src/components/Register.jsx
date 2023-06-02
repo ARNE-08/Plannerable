@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Box } from '@mui/material'
 import { Box, Typography, Grid, TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useState, useContext } from 'react';
@@ -31,7 +30,6 @@ function Register({ setIsLogin, setStatus }) {
 
   const handleSubmit = async () => {
     if (!validateForm()) {
-      // console.log("work")
       return;
     }
     try {
@@ -40,7 +38,6 @@ function Register({ setIsLogin, setStatus }) {
         email,
         password
       });
-      // console.log("work")
       if (response.data.success) {
         setIsLogin(true);
         setStatus({
@@ -112,7 +109,6 @@ function Register({ setIsLogin, setStatus }) {
       direction="column"
       justifyContent="center"
       alignItems="center"
-    // class="Form"
     >
       <Grid item xs={12} display={{ xs: "none", sm: "block" }}>
         <Box
@@ -159,7 +155,6 @@ function Register({ setIsLogin, setStatus }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <Person2OutlinedIcon sx={{ position: 'relative', bottom: '70px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm pass"
               id="input-with-sx"
               label="Username"
               type={"text"}
@@ -177,7 +172,6 @@ function Register({ setIsLogin, setStatus }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '40px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm mail"
               id="input-with-sx"
               label="Email"
               type={"email"}
@@ -194,7 +188,6 @@ function Register({ setIsLogin, setStatus }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <LockOutlinedIcon sx={{ position: 'relative', bottom: '10px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm pass"
               id="input-with-sx"
               label="Password"
               type={"password"}
@@ -256,11 +249,9 @@ function Register({ setIsLogin, setStatus }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <Person2OutlinedIcon sx={{ position: 'relative', bottom: '70px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm pass"
               id="input-with-sx"
               label="Username"
               type={"text"}
-              // value={email}
               sx={{ width: '200px', position: 'relative', bottom: '75px' }}
               variant="standard"
               required
@@ -270,11 +261,9 @@ function Register({ setIsLogin, setStatus }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <MailOutlineRoundedIcon sx={{ position: 'relative', bottom: '40px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm mail"
               id="input-with-sx"
               label="Email"
               type={"email"}
-              // value={email}
               sx={{ width: '200px', position: 'relative', bottom: '45px' }}
               variant="standard"
               required />
@@ -283,11 +272,9 @@ function Register({ setIsLogin, setStatus }) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <LockOutlinedIcon sx={{ position: 'relative', bottom: '10px', color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField
-              // class="InputForm pass"
               id="input-with-sx"
               label="Password"
               type={"password"}
-              // value={email}
               sx={{ width: '200px', position: 'relative', bottom: '15px' }}
               variant="standard"
               required

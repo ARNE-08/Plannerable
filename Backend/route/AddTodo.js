@@ -6,7 +6,6 @@ module.exports = (req, res) => {
     const status = "not complete";
 
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
-    // console.log(decoded);
 
     connection.query("INSERT INTO todos (user_id, name, deadline, time, description, status) VALUES (?, ?, ?, ?, ?, ?)",
         [decoded.userId, name, deadline, time, description, status],

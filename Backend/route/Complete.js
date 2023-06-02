@@ -4,10 +4,8 @@ var jwt = require("jsonwebtoken");
 module.exports = (req, res) => {
     const token = req.cookies.user;
     const status = "completed"
-    // const { profile_picture } = req.body;
 
     var decoded = jwt.verify(token, "ZJGX1QL7ri6BGJWj3t");
-    // console.log(decoded);
 
     connection.query("UPDATE todos SET status = ? WHERE user_id = ?",
         [status, decoded.userId],

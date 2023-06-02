@@ -1,5 +1,3 @@
-// import { PrismaClient } from '@prisma/client';
-
 const express = require("express");
 const app = express();
 const mysql = require("mysql2");
@@ -11,7 +9,7 @@ const port = 8000;
 
 app.use(
     cors({
-        origin: ['http://localhost:5174', 'http://localhost:5173'],
+        origin: ['http://localhost:5173'],
         credentials: true,
     })
 );
@@ -55,9 +53,6 @@ app.get("/getNote", require("./route/GetNote"));
 app.patch("/editNote", require("./route/EditNote"));
 app.get("/getTodayTodo", require("./route/GetTodayTodo"));
 app.get("/isLogin", require("./route/GetLogin"));
-
-//unfinish
-app.get("/geTodoStatus", require("./route/GetStatus"));
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

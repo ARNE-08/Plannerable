@@ -525,8 +525,8 @@ Response
 |----------|:-------------:|:------|
 | no parameter | Array of todayTodo | all todos related to user that is not pass deadline |
 
-#### todo
-the todo object
+#### todayTodo
+the todayTodo object
 | Parameter | Type | Description |
 |----------|:-------------:|:------|
 | id | string | id of todo |

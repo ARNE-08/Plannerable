@@ -1,7 +1,9 @@
 # Plannerable
 
-This repository contain backend and frontend for Plannarable website.<br>
 Plannerable is a planner, which allow the user to add and plan their task.
+This repository contain backend and frontend for Plannarable website.<br>
+
+## Stack Technology
 
 ## Functions
 - Create / Read / Update / Delete user's to-do list
